@@ -2,14 +2,442 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <title>Мой первый сайт</title>
+  <title>Ситуационно-игровая методика начального обучения юных лыжников-гонщиков — диссертация Манжула А.С.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Экспериментальное обоснование эффективности ситуационно-игровой методики для юных лыжников-гонщиков. Результаты, игры, примеры и материалы для скачивания.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {font-family: Arial, sans-serif; margin: 40px; background:#f5f5f5;}
-    h1   {color:#2c3e50;}
+    :root {
+      --bg: #f5f7fa;
+      --accent: #009ee3;
+      --text: #222;
+      --card: #ffffff;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    section {
+      min-height: 70vh;
+      padding: 4rem 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+    }
+    h1, h2 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    h1 {
+      font-size: 2.2rem;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.8rem;
+      color: var(--accent);
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: .75rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: transform .2s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    /* Hero */
+    .hero {
+      background: url('https://source.unsplash.com/1600x900/?winter,child,ski') center/cover no-repeat;
+      position: relative;
+      color: #fff;
+      text-align: center;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+    }
+    .hero .container {
+      position: relative;
+      z-index: 2;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin: 1rem 0 2rem;
+    }
+    /* Problem */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .problem-grid svg {
+      width: 100%;
+      height: auto;
+    }
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      transition: transform .3s;
+    }
+    .card:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
+    .card h3 {
+      margin-bottom: .5rem;
+      color: var(--accent);
+    }
+    /* Scroll-stats */
+    .scroll-stats {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+    .stat {
+      min-width: 220px;
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      text-align: center;
+    }
+    .stat .num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      padding: .5rem 1rem;
+      border: 1px solid #ddd;
+    }
+    th {
+      background: var(--accent);
+      color: #fff;
+    }
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .gal-item {
+      position: relative;
+      background: var(--card);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      transition: transform .3s;
+    }
+    .gal-item:hover {
+      transform: scale(1.05);
+    }
+    .gal-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .gal-item .title {
+      padding: 1rem;
+      font-weight: 600;
+    }
+    .tooltip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,.65);
+      color: #fff;
+      padding: .5rem;
+      font-size: .85rem;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .gal-item:hover .tooltip {
+      opacity: 1;
+    }
+    /* Before/After */
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .before-after img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+    }
+    /* Materials */
+    .materials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+    /* Contacts */
+    .contacts a {
+      margin: .5rem 1rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    /* Animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Mobile */
+    @media (max-width: 768px) {
+      .problem-grid,
+      .before-after {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Привет, мир!</h1>
-  <p>Это моя первая страница в интернете.</p>
+
+<!-- 1. Hero -->
+<section class="hero">
+  <div class="container">
+    <h1>Ситуационно-игровая методика начального обучения юных лыжников-гонщиков</h1>
+    <p>Диссертация Манжулы А.С. | 2025 | Экспериментальное обоснование эффективности</p>
+    <a class="btn" href="#materials">Скачать PDF методички</a>
+  </div>
+</section>
+
+<!-- 2. Problem -->
+<section id="problem">
+  <div class="container">
+    <h2>О проблеме</h2>
+    <div class="problem-grid fade-up">
+      <div>
+        <p>Традиционные тренировки 7-12-летних лыжников часто страдают монотонностью, падением мотивации и преждевременным утомлением.</p>
+        <p><strong>Решение:</strong> до 15 % времени тренировки заменяется на игровые упражнения в рамках «Конструктора игр», что повышает координацию, вовлечённость и удержание техники без давления.</p>
+      </div>
+      <div>
+        <!-- simple SVG icons -->
+        <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="#009ee3" opacity=".2"/><path d="M50 20v30m0 30v30m-30-50h30m30 0h30" stroke="#009ee3" stroke-width="4"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Constructor -->
+<section id="constructor">
+  <div class="container">
+    <h2>Что такое «Конструктор игр»</h2>
+    <div class="cards fade-up">
+      <div class="card">
+        <h3>Подготовительная часть</h3>
+        <p>Разминка низкой интенсивности: «Лыжные салки», «Снежные узоры» — 10 мин.</p>
+      </div>
+      <div class="card">
+        <h3>Основная часть</h3>
+        <p>Целенаправленное развитие техники и силы: «Лабиринт», «Самокат», «Пингвины» — 20-25 мин.</p>
+      </div>
+      <div class="card">
+        <h3>Заключительная часть</h3>
+        <p>Спокойные игры на внимание и растяжку: «Тихий телефон», «Глухой телефон» — 5 мин.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Stats -->
+<section id="stats">
+  <div class="container">
+    <h2>Цифры эксперимента (2022-2025)</h2>
+    <div class="scroll-stats fade-up">
+      <div class="stat">
+        <div class="num">+16,7 см</div>
+        <p>Y-тест баланса за 2 года</p>
+      </div>
+      <div class="stat">
+        <div class="num">0,7 → 4,0 м</div>
+        <p>Прокат на 1 лыже (d=3,16)</p>
+      </div>
+      <div class="stat">
+        <div class="num">−1,1 с</div>
+        <p>Челночный бег 3×10 м (p&lt;0,001)</p>
+      </div>
+    </div>
+
+    <table class="fade-up">
+      <thead>
+        <tr><th>Показатель</th><th>2022</th><th>2025</th><th>Рост</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Y-тест баланса, см</td><td>196,4 ±33</td><td>213,1 ±26</td><td>+16,7</td></tr>
+        <tr><td>Прокат на 1 лыже, м</td><td>0,7 ±0,3</td><td>4,0 ±1,0</td><td>+3,3</td></tr>
+        <tr><td>Челночный бег, с</td><td>9,2 ±0,9</td><td>8,1 ±0,4</td><td>−1,1</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 5. Gallery -->
+<section id="gallery">
+  <div class="container">
+    <h2>Галерея упражнений</h2>
+    <div class="gallery fade-up">
+      <div class="gal-item">
+        <img src="https://source.unsplash.com/400x300/?maze,winter" alt="Лабиринт">
+        <div class="title">Лабиринт</div>
+        <div class="tooltip">Развивает координацию и быструю смену направления</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://source.unsplash.com/400x300/?snow,draw" alt="Снежные узоры">
+        <div class="title">Снежные узоры</div>
+        <div class="tooltip">Творческое задание на точность поворотов</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://source.unsplash.com/400x300/?penguin,ice" alt="Пингвины на льдине">
+        <div class="title">Пингвины на льдине</div>
+        <div class="tooltip">Игра на баланс и командное взаимодействие</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://source.unsplash.com/400x300/?ski,snow" alt="Самокат">
+        <div class="title">Самокат</div>
+        <div class="tooltip">Отработка одноопорного скольжения</div>
+      </div>
+      <div class="gal-item">
+        <img src="https://source.unsplash.com/400x300/?obstacle,winter" alt="Полоса препятствий">
+        <div class="title">Полоса препятствий</div>
+        <div class="tooltip">Комплексная техника и ловкость</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Video -->
+<section id="video">
+  <div class="container fade-up">
+    <h2>Видео-демо</h2>
+    <video controls poster="https://source.unsplash.com/800x450/?ski,kids">
+      <source src="" type="video/mp4">
+      Ваш браузер не поддерживает видео.
+    </video>
+    <p>30-секундный фрагмент тренировки 9-летних спортсменов</p>
+  </div>
+</section>
+
+<!-- 7. Case -->
+<section id="case">
+  <div class="container">
+    <h2>Портфолио ребёнка (пример)</h2>
+    <div class="before-after fade-up">
+      <div>
+        <img src="https://source.unsplash.com/500x350/?ski,beginner" alt="До">
+        <p>До: прокат 0,7 м, Y-тест 196 см</p>
+      </div>
+      <div>
+        <img src="https://source.unsplash.com/500x350/?ski,professional" alt="После">
+        <p>После: прокат 4,0 м, Y-тест 213 см</p>
+      </div>
+    </div>
+    <blockquote>«…без давления, без слёз — только удовольствие от момента»</blockquote>
+  </div>
+</section>
+
+<!-- 8. Materials -->
+<section id="materials">
+  <div class="container">
+    <h2>Материалы для скачивания</h2>
+    <div class="materials fade-up">
+      <div class="card">
+        <h3>PDF «Методичка тренера»</h3>
+        <p>2 МБ, 32 стр., готовый план на 12 занятий</p>
+        <a class="btn" href="#" download>Скачать</a>
+      </div>
+      <div class="card">
+        <h3>Excel «Конструктор игр»</h3>
+        <p>Шаблон для подбора упражнений</p>
+        <a class="btn" href="#" download>Скачать</a>
+      </div>
+      <div class="card">
+        <h3>PNG «Шкала ВАШ для детей»</h3>
+        <p>Визуальная аналоговая шкала самочувствия</p>
+        <a class="btn" href="#" download>Скачать</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Contacts -->
+<section id="contacts">
+  <div class="container fade-up">
+    <h2>Контакты</h2>
+    <p>Если остались вопросы — пишите:</p>
+    <div class="contacts">
+      <a href="mailto:manzhula205@gmail.ru">manzhula205@gmail.ru</a>
+      <a href="https://t.me/ski_constructor" target="_blank">Telegram: @ski_constructor</a>
+    </div>
+    <a class="btn" href="mailto:manzhula205@gmail.ru?subject=Вопрос по методике">Задать вопрос автору</a>
+  </div>
+</section>
+
+<script>
+  // fade-up on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: .2 });
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
