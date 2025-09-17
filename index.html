@@ -153,12 +153,14 @@
                     <h1 class="text-xl font-serif font-bold text-primary-700">Методическое пособие</h1>
                 </div>
                 <div class="flex items-center space-x-1 sm:space-x-4">
-                    <button onclick="openTab('home')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button active">Главная</button>
-                    <button onclick="openTab('theory')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button">Теория и Методика</button>
-                    <button onclick="openTab('constructor')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button">Конструктор Игр</button>
-                    <button onclick="openTab('planner')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button">Планировщик</button>
-                    <button onclick="openTab('portfolio')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button">Портфолио</button>
-                </div>
+    <button onclick="openTab('home')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button active">Главная</button>
+    <button onclick="openTab('theory')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button">Теория и Методика</button>
+    <button onclick="openTab('constructor')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button">Конструктор Игр</button>
+    <button onclick="openTab('planner')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button">Планировщик</button>
+    <button onclick="openTab('portfolio')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button">Портфолио</button>
+    <!-- Новая кнопка для вкладки "Приложения" -->
+    <button onclick="openTab('downloads')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button">Приложения</button>
+</div>
             </div>
         </div>
     </nav>
@@ -1172,7 +1174,70 @@
                         </div>
                     </div>
                 </div>
+<!-- ВКЛАДКА 6: Приложения/Скачивание -->
+<section id="downloads" class="tab-content">
+    <div class="max-w-4xl mx-auto p-6 bg-white shadow-lg mt-6">
+        <h1 class="text-3xl font-bold text-center mb-8">Приложения и материалы</h1>
+        <div class="space-y-4">
+            <!-- Секция 1: Методические материалы -->
+            <div class="border-b pb-4">
+                <h2 class="text-xl font-semibold mb-3">Методические материалы</h2>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>
+                        <a href="pdfs/metodichka_osnovy.pdf" download="Опросник Почему я люблю беговые лыжи.pdf?" class="text-blue-600 hover:underline">
+                            Опросник "Почему я люблю беговые лыжи?" (PDF)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pdfs/shkala_VASH.jpg" download="Шкала ВАШ.jpg" class="text-blue-600 hover:underline">
+                            Шкала ВАШ (JPG)
+                        </a>
+                    </li>
+                    <!-- Добавьте больше ссылок по аналогии -->
+                    <!--
+                    <li>
+                        <a href="pdfs/metodicheskoe_posobie.pdf" download="Методическое пособие.pdf" class="text-blue-600 hover:underline">
+                            Методическое пособие (PDF)
+                        </a>
+                    </li>
+                    -->
+                </ul>
+            </div>
 
+            <!-- Секция 2: Формы и документы -->
+            <div class="border-b pb-4">
+                <h2 class="text-xl font-semibold mb-3">Формы и документы</h2>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>
+                        <a href="pdfs/forma_zayavka.pdf" download="Форма_заявки_на_секцию.pdf" class="text-blue-600 hover:underline">
+                            Форма заявки в лыжную секцию (PDF)
+                        </a>
+                    </li>
+                     <li>
+                        <a href="pdfs/dnevnik_trenirovok.pdf" download="Дневник_тренировок.pdf" class="text-blue-600 hover:underline">
+                            Дневник юного лыжника (PDF)
+                        </a>
+                    </li>
+                    <!-- Добавьте больше ссылок по аналогии -->
+                </ul>
+            </div>
+
+            <!-- Секция 3: Прочие материалы (опционально) -->
+            <!--
+            <div>
+                <h2 class="text-xl font-semibold mb-3">Прочие материалы</h2>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>
+                        <a href="pdfs/istoriya_lyzhnogo_sporta.pdf" download="История_лыжного_спорта.pdf" class="text-blue-600 hover:underline">
+                            История лыжного спорта (PDF)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            -->
+        </div>
+    </div>
+</section>
                 <!-- Кнопки действий -->
                 <div class="flex justify-center mt-8 no-print">
                     <button onclick="printPortfolio()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded mr-4">
@@ -1882,4 +1947,5 @@ function printPortfolio() {
     </script>
 </body>
 </html>
+
 
