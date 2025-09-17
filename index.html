@@ -1870,8 +1870,58 @@ function printPortfolio() {
             printWindow.print();
         }
 
-                // --- НАЧАЛО: Конструктор игр - генерация с ИИ ---
-        document.getElementById('generateBtn')?.addEventListener('click', async function() {
+                        // --- НАЧАЛО: Глобальные функции для Конструктора игр (должны быть объявлены высоко) ---
+
+        // --- НАЧАЛО: Функция для очистки поля генерации (ГЛОБАЛЬНАЯ) ---
+        function clearGeneratedGame() {
+            console.log("Вызов clearGeneratedGame");
+            // Очищаем поля ввода
+            const nameInput = document.getElementById('gameName');
+            const goalInput = document.getElementById('gameGoal');
+            const playersInput = document.getElementById('playerCount');
+            const detailsInput = document.getElementById('gameDetails');
+
+            if (nameInput) nameInput.value = '';
+            if (goalInput) goalInput.value = '';
+            if (playersInput) playersInput.value = '';
+            if (detailsInput) detailsInput.value = '';
+
+            // Скрываем секцию сгенерированной игры
+            const generatedGameElement = document.getElementById('generatedGame');
+            if (generatedGameElement) {
+                generatedGameElement.classList.add('hidden');
+            }
+        }
+        // --- КОНЕЦ: Функция для очистки поля генерации (ГЛОБАЛЬНАЯ) ---
+
+        // --- НАЧАЛО: Функция для сохранения сгенерированной игры (ГЛОБАЛЬНАЯ, заглушка) ---
+        function saveGeneratedGame(gameName) {
+            console.log("Вызов saveGeneratedGame с аргументом:", gameName);
+            const generatedContentElement = document.getElementById('generatedContent');
+            if (!generatedContentElement) {
+                alert('Ошибка: не найден контент для сохранения.');
+                return;
+            }
+
+            // Получаем текст из сгенерированного контента
+            // Это базовая попытка извлечь текст. Для более точного извлечения потребуется более сложный парсинг HTML.
+            const contentText = generatedContentElement.innerText || generatedContentElement.textContent || 'Текст не найден';
+
+            // Показываем alert с названием и текстом игры
+            alert(`Игра "${gameName}" сохранена (имитация):\n\n${contentText}\n\nВ реальной версии здесь будет логика добавления в базу данных.`);
+
+            // Здесь можно реализовать логику:
+            // 1. Создания объекта игры из текста или переданных данных.
+            // 2. Добавления этого объекта в массив gamesDB.
+            // 3. Обновления отображения на вкладке "База игр".
+            // Пока это просто заглушка.
+        }
+        // --- КОНЕЦ: Функция для сохранения сгенерированной игры (ГЛОБАЛЬНАЯ, заглушка) ---
+
+        // --- КОНЕЦ: Глобальные функции для Конструктора игр ---
+
+        // --- НАЧАЛО: Конструктор игр - генерация с ИИ ---
+        document.getElementById('generateBtn')?.addEventListener('click', async function () {
             const name = document.getElementById('gameName').value.trim();
             const goal = document.getElementById('gameGoal').value.trim();
             const players = document.getElementById('playerCount').value.trim();
@@ -1925,8 +1975,7 @@ function printPortfolio() {
             // ВАЖНО: ВСТАВИТЬ СЮДА ваш НОВЫЙ API-ключ ПОСЛЕ теста!
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             const API_KEY = 'AIzaSyAREqrGzrOMZjUC0aAj64zgyv1KfYD_jEc'; // <-- ВАШ КЛЮЧ (ЗАМЕНИТЬ ПОСЛЕ ТЕСТА!)
-
-            // Убедитесь, что используете доступную модель. gemini-1.5-flash обычно работает.
+            // Исправлен URL без лишних пробелов
             const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
             // Или: const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${API_KEY}`;
 
@@ -2001,23 +2050,20 @@ function printPortfolio() {
                         </button>
                     </div>
                 `;
-                
-// Добавляем обработчики для новых кнопок внутри сгенерированного контента
-document.getElementById('cancelGeneratedGameBtn')?.addEventListener('click', clearGeneratedGame);
-document.getElementById('saveGeneratedGameBtn')?.addEventListener('click', () => saveGeneratedGame(name));
-               // Добавляем обработчики для новых кнопок внутри сгенерированного контента
-// Используем addEventListener вместо onclick в HTML для динамических элементов
-const cancelBtn = document.getElementById('cancelGeneratedGameBtn');
-const saveBtn = document.getElementById('saveGeneratedGameBtn');
-if (cancelBtn) {
-    cancelBtn.addEventListener('click', clearGeneratedGame);
-}
-if (saveBtn) {
-    // Передаем имя игры в функцию saveGeneratedGame
-    saveBtn.addEventListener('click', function() {
-        saveGeneratedGame(name);
-    });
 
+                // Добавляем обработчики для новых кнопок внутри сгенерированного контента
+                // Используем addEventListener вместо onclick в HTML для динамических элементов
+                const cancelBtn = document.getElementById('cancelGeneratedGameBtn');
+                const saveBtn = document.getElementById('saveGeneratedGameBtn');
+                if (cancelBtn) {
+                    cancelBtn.addEventListener('click', clearGeneratedGame);
+                }
+                if (saveBtn) {
+                    // Передаем имя игры в функцию saveGeneratedGame
+                    saveBtn.addEventListener('click', function () {
+                        saveGeneratedGame(name);
+                    });
+                }
 
             } catch (error) {
                 // 8. Обработка ошибок (сетевые проблемы, ошибки API, ошибки парсинга и т.д.)
@@ -2044,7 +2090,7 @@ if (saveBtn) {
         // --- КОНЕЦ: Конструктор игр - генерация с ИИ ---
 
         // --- НАЧАЛО: Сохранение сгенерированной игры (заглушка) ---
-        document.getElementById('saveGameBtn')?.addEventListener('click', function() {
+        document.getElementById('saveGameBtn')?.addEventListener('click', function () {
             // Так как кнопка 'Сохранить' внутри сгенерированного блока заменяется динамически,
             // этот обработчик может не сработать для новой кнопки.
             // Логика сохранения теперь в функции saveGeneratedGame.
@@ -2054,7 +2100,7 @@ if (saveBtn) {
         // --- КОНЕЦ: Сохранение сгенерированной игры (заглушка) ---
 
         // --- НАЧАЛО: Отмена сгенерированной игры (заглушка) ---
-        document.getElementById('cancelGameBtn')?.addEventListener('click', function() {
+        document.getElementById('cancelGameBtn')?.addEventListener('click', function () {
             // Так как кнопка 'Отменить' внутри сгенерированного блока заменяется динамически,
             // этот обработчик может не сработать для новой кнопки.
             // Логика отмены теперь в функции clearGeneratedGame.
@@ -2062,55 +2108,6 @@ if (saveBtn) {
             clearGeneratedGame();
         });
         // --- КОНЕЦ: Отмена сгенерированной игры (заглушка) ---
-// --- НАЧАЛО: Функция для очистки поля генерации (ГЛОБАЛЬНАЯ) ---
-// Эта функция должна быть объявлена на верхнем уровне <script> или прикреплена к window,
-// чтобы быть доступной для onclick="clearGeneratedGame()" в динамически созданном HTML.
-function clearGeneratedGame() {
-    console.log("Вызов clearGeneratedGame");
-    // Очищаем поля ввода
-    const nameInput = document.getElementById('gameName');
-    const goalInput = document.getElementById('gameGoal');
-    const playersInput = document.getElementById('playerCount');
-    const detailsInput = document.getElementById('gameDetails');
-
-    if (nameInput) nameInput.value = '';
-    if (goalInput) goalInput.value = '';
-    if (playersInput) playersInput.value = '';
-    if (detailsInput) detailsInput.value = '';
-
-    // Скрываем секцию сгенерированной игры
-    const generatedGameElement = document.getElementById('generatedGame');
-    if (generatedGameElement) {
-        generatedGameElement.classList.add('hidden');
-    }
-}
-// --- КОНЕЦ: Функция для очистки поля генерации (ГЛОБАЛЬНАЯ) ---
-
-// --- НАЧАЛО: Функция для сохранения сгенерированной игры (ГЛОБАЛЬНАЯ, заглушка) ---
-// Эта функция должна быть объявлена на верхнем уровне <script> или прикреплена к window,
-// чтобы быть доступной для onclick="saveGeneratedGame()" в динамически созданном HTML.
-function saveGeneratedGame(gameName) {
-    console.log("Вызов saveGeneratedGame с аргументом:", gameName);
-    const generatedContentElement = document.getElementById('generatedContent');
-    if (!generatedContentElement) {
-        alert('Ошибка: не найден контент для сохранения.');
-        return;
-    }
-
-    // Получаем текст из сгенерированного контента
-    // Это базовая попытка извлечь текст. Для более точного извлечения потребуется более сложный парсинг HTML.
-    const contentText = generatedContentElement.innerText || generatedContentElement.textContent || 'Текст не найден';
-
-    // Показываем alert с названием и текстом игры
-    alert(`Игра "${gameName}" сохранена (имитация):\n\n${contentText}\n\nВ реальной версии здесь будет логика добавления в базу данных.`);
-
-    // Здесь можно реализовать логику:
-    // 1. Создания объекта игры из текста или переданных данных.
-    // 2. Добавления этого объекта в массив gamesDB.
-    // 3. Обновления отображения на вкладке "База игр".
-    // Пока это просто заглушка.
-}
-// --- КОНЕЦ: Функция для сохранения сгенерированной игры (ГЛОБАЛЬНАЯ, заглушка) ---
         
         // Инициализация приложения
         document.addEventListener('DOMContentLoaded', function() {
@@ -2123,6 +2120,7 @@ function saveGeneratedGame(gameName) {
     </script>
 </body>
 </html>
+
 
 
 
