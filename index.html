@@ -1870,59 +1870,185 @@ function printPortfolio() {
             printWindow.print();
         }
 
-        // Конструктор игр - генерация
+                // --- НАЧАЛО: Конструктор игр - генерация с ИИ ---
         document.getElementById('generateBtn')?.addEventListener('click', async function() {
-            const name = document.getElementById('gameName').value;
-            const goal = document.getElementById('gameGoal').value;
-            const players = document.getElementById('playerCount').value;
-            const details = document.getElementById('gameDetails').value;
+            const name = document.getElementById('gameName').value.trim();
+            const goal = document.getElementById('gameGoal').value.trim();
+            const players = document.getElementById('playerCount').value.trim();
+            const details = document.getElementById('gameDetails').value.trim();
 
-            if (!name || !goal || !players || !details) {
-                alert('Пожалуйста, заполните все поля.');
+            // Базовая проверка заполненности обязательных полей
+            if (!name || !goal) {
+                alert('Пожалуйста, заполните как минимум название и цель игры.');
                 return;
             }
 
-            // Симуляция вызова ИИ (в реальном приложении здесь будет fetch к API)
-            // Для демонстрации просто создаем простую игру на основе ввода
-            const generatedGame = {
-                name: name,
-                objective: goal,
-                group: players.includes('команда') || players.includes('группа') ? "Команда" : "Индивидуально",
-                description: details,
-                variations: "Усложнение: Добавить препятствия. Облегчение: Уменьшить дистанцию."
+            // Подготовка элементов UI для отображения результата
+            const generatedGameElement = document.getElementById('generatedGame');
+            const generatedContentElement = document.getElementById('generatedContent');
+            if (generatedGameElement && generatedContentElement) {
+                generatedGameElement.classList.remove('hidden');
+                // Показываем индикатор загрузки
+                generatedContentElement.innerHTML = `
+                    <div class="flex flex-col items-center justify-center p-8 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
+                        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
+                        <p class="text-gray-600">Генерируем инструкцию с помощью ИИ...</p>
+                    </div>
+                `;
+            } else {
+                console.error("Не найдены элементы generatedGame или generatedContent в DOM");
+                alert("Ошибка отображения: не найдены необходимые элементы на странице.");
+                return;
+            }
+
+            // --- НАЧАЛО: Реальный вызов ИИ ---
+            // 1. Подготовка промпта (запроса) для ИИ
+            const prompt = `Ты - опытный тренер по беговым лыжам для детей.
+Создай игровую тренировочную активность (игру) на основе следующих данных:
+Название: ${name}
+Цель: ${goal}
+Количество игроков: ${players || 'Не указано'}
+Дополнительные детали: ${details || 'Нет'}
+
+Используй четкую структуру для ответа:
+1. Название игры: [Повтори название]
+2. Цель игры: [Опиши цель игры, связанную с ${goal}]
+3. Инвентарь: [Перечисли необходимые предметы, если нужны]
+4. Ход игры: [Пошаговое описание правил и действий игроков]
+5. Вариации: [Предложи один способ усложнить игру и один способ облегчить]
+6. Рефлексия: [Задай 2-3 вопроса для обсуждения после игры, чтобы закрепить навыки]
+
+Отвечай только на русском языке и строго по пунктам, без дополнительных комментариев.`;
+
+            // 2. Подготовка данных для запроса к API
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // ВАЖНО: ВСТАВИТЬ СЮДА ваш НОВЫЙ API-ключ ПОСЛЕ теста!
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            const API_KEY = 'AIzaSyAREqrGzrOMZjUC0aAj64zgyv1KfYD_jEc'; // <-- ВАШ КЛЮЧ (ЗАМЕНИТЬ ПОСЛЕ ТЕСТА!)
+
+            // Убедитесь, что используете доступную модель. gemini-1.5-flash обычно работает.
+            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+            // Или: const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${API_KEY}`;
+
+            const requestBody = {
+                contents: [{
+                    parts: [{
+                        text: prompt
+                    }]
+                }]
             };
 
-            document.getElementById('generatedContent').innerHTML = `
-                <h3 class="text-xl font-serif font-semibold mb-2">${generatedGame.name}</h3>
-                <p class="mb-2"><strong>Цель:</strong> ${generatedGame.objective}</p>
-                <p class="mb-2"><strong>Участники:</strong> ${generatedGame.group}</p>
-                <p class="mb-2"><strong>Описание:</strong> ${generatedGame.description}</p>
-                <p class="mb-2"><strong>Варианты:</strong> ${generatedGame.variations}</p>
-            `;
-            document.getElementById('generatedGame').classList.remove('hidden');
-        });
+            try {
+                // 3. Отправка запроса к API Google AI
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                        // Примечание: ключ передается в URL, отдельный заголовок X-goog-api-key не обязателен
+                    },
+                    body: JSON.stringify(requestBody)
+                });
 
-        // Сохранение сгенерированной игры
+                // 4. Проверка успешности запроса
+                if (!response.ok) {
+                    let errorMsg = `Ошибка API Google AI: ${response.status} ${response.statusText}`;
+                    try {
+                        // Попытка получить детали ошибки от API
+                        const errorData = await response.json();
+                        console.error("Детали ошибки API:", errorData);
+                        errorMsg += `. Сообщение: ${errorData.error?.message || 'Неизвестная ошибка API'}`;
+                    } catch (parseError) {
+                        // Если не удалось распарсить JSON ошибки, просто логируем
+                        console.error("Ошибка парсинга JSON ошибки API:", parseError);
+                    }
+                    // Выбрасываем ошибку для обработки в блоке catch
+                    throw new Error(errorMsg);
+                }
+
+                // 5. Получение и обработка ответа от ИИ
+                const data = await response.json();
+                console.log("Полный ответ от ИИ:", data); // Для отладки
+
+                let generatedText = "ИИ не вернул текст ответа или ответ был пустой.";
+                // Проверяем структуру ответа и извлекаем текст
+                if (data.candidates &&
+                    data.candidates[0] &&
+                    data.candidates[0].content &&
+                    data.candidates[0].content.parts &&
+                    data.candidates[0].content.parts[0]) {
+                    generatedText = data.candidates[0].content.parts[0].text;
+                }
+
+                // 6. Форматирование текста для отображения
+                // Разбиваем текст на строки, фильтруем пустые, оборачиваем в <p>
+                const lines = generatedText.split('\n').filter(line => line.trim() !== '');
+                const formattedContent = lines.map(line => `<p class="mb-2">${line.trim()}</p>`).join('');
+
+                // 7. Отображение результата в элементе generatedContent
+                generatedContentElement.innerHTML = `
+                    <div class="prose max-w-none">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">${name}</h3>
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                            ${formattedContent}
+                        </div>
+                    </div>
+                    <div class="flex justify-end space-x-3 mt-4">
+                        <button id="cancelGeneratedGameBtn" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition focus:outline-none focus:ring-2 focus:ring-gray-400">
+                            Очистить
+                        </button>
+                        <button id="saveGeneratedGameBtn" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition focus:outline-none focus:ring-2 focus:ring-green-400">
+                            Добавить в базу
+                        </button>
+                    </div>
+                `;
+
+                // Добавляем обработчики для новых кнопок внутри сгенерированного контента
+                document.getElementById('cancelGeneratedGameBtn')?.addEventListener('click', clearGeneratedGame);
+                document.getElementById('saveGeneratedGameBtn')?.addEventListener('click', () => saveGeneratedGame(name));
+
+            } catch (error) {
+                // 8. Обработка ошибок (сетевые проблемы, ошибки API, ошибки парсинга и т.д.)
+                console.error("Ошибка при вызове ИИ:", error);
+                // Отображаем пользователю понятное сообщение об ошибке
+                generatedContentElement.innerHTML = `
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-exclamation-triangle text-red-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-red-700">
+                                    <strong>Ошибка генерации:</strong> ${error.message}
+                                </p>
+                                <p class="text-xs text-red-600 mt-1">Проверьте подключение к интернету и корректность API-ключа.</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            // --- КОНЕЦ: Реальный вызов ИИ ---
+        });
+        // --- КОНЕЦ: Конструктор игр - генерация с ИИ ---
+
+        // --- НАЧАЛО: Сохранение сгенерированной игры (заглушка) ---
         document.getElementById('saveGameBtn')?.addEventListener('click', function() {
-            alert('Игра сохранена в локальную базу (демонстрация).');
-            // В реальном приложении здесь будет логика сохранения в localStorage или на сервер
-            document.getElementById('generatedGame').classList.add('hidden');
-            // Очистка формы
-            document.getElementById('gameName').value = '';
-            document.getElementById('gameGoal').value = '';
-            document.getElementById('playerCount').value = '';
-            document.getElementById('gameDetails').value = '';
+            // Так как кнопка 'Сохранить' внутри сгенерированного блока заменяется динамически,
+            // этот обработчик может не сработать для новой кнопки.
+            // Логика сохранения теперь в функции saveGeneratedGame.
+            // Оставляем для совместимости со старым UI, если он где-то используется.
+            alert('Функция "Сохранить" (старая кнопка) активирована. Используйте кнопку "Добавить в базу" в сгенерированной игре.');
         });
+        // --- КОНЕЦ: Сохранение сгенерированной игры (заглушка) ---
 
-        // Отмена сгенерированной игры
+        // --- НАЧАЛО: Отмена сгенерированной игры (заглушка) ---
         document.getElementById('cancelGameBtn')?.addEventListener('click', function() {
-            document.getElementById('generatedGame').classList.add('hidden');
-            // Очистка формы
-            document.getElementById('gameName').value = '';
-            document.getElementById('gameGoal').value = '';
-            document.getElementById('playerCount').value = '';
-            document.getElementById('gameDetails').value = '';
+            // Так как кнопка 'Отменить' внутри сгенерированного блока заменяется динамически,
+            // этот обработчик может не сработать для новой кнопки.
+            // Логика отмены теперь в функции clearGeneratedGame.
+            // Оставляем для совместимости со старым UI, если он где-то используется.
+            clearGeneratedGame();
         });
+        // --- КОНЕЦ: Отмена сгенерированной игры (заглушка) ---
 
         // Инициализация приложения
         document.addEventListener('DOMContentLoaded', function() {
@@ -1935,6 +2061,7 @@ function printPortfolio() {
     </script>
 </body>
 </html>
+
 
 
 
