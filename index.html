@@ -1752,7 +1752,7 @@
             printSection(printContent);
         }
 
-        // Печать портфолио
+        // Печать портфолио (Версия, которая заменяет поля ввода на текст)
 function printPortfolio() {
     // Создаем копию содержимого портфолио, чтобы не модифицировать оригинал
     const portfolioContent = document.getElementById('portfolio').cloneNode(true);
@@ -1840,7 +1840,7 @@ function printPortfolio() {
         <body>
             ${portfolioContent.innerHTML}
             <script>
-                // Скрыть potencial оставшиеся no-print элементы и запустить печать
+                // Скрыть потенциальные оставшиеся no-print элементы и запустить печать
                 window.onload = function() {
                     var noPrintElements = document.getElementsByClassName('no-print');
                     for (var i = 0; i < noPrintElements.length; i++) {
@@ -2191,6 +2191,7 @@ document.getElementById('cancelGameBtn')?.addEventListener('click', function () 
     </script>
 </body>
 </html>
+
 
 
 
