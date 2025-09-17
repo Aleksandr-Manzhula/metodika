@@ -1,444 +1,1887 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <title>Ситуационно-игровая методика начального обучения юных лыжников-гонщиков — диссертация Манжула А.С.</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Экспериментальное обоснование эффективности ситуационно-игровой методики для юных лыжников-гонщиков. Результаты, игры, примеры и материалы для скачивания.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #f5f7fa;
-      --accent: #009ee3;
-      --text: #222;
-      --card: #ffffff;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
-    section {
-      min-height: 70vh;
-      padding: 4rem 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .container {
-      width: 100%;
-      max-width: 1100px;
-      margin: auto;
-    }
-    h1, h2 {
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    h1 {
-      font-size: 2.2rem;
-      text-align: center;
-    }
-    h2 {
-      font-size: 1.8rem;
-      color: var(--accent);
-    }
-    p {
-      margin-bottom: 1rem;
-    }
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: .75rem 1.5rem;
-      border-radius: 4px;
-      text-decoration: none;
-      transition: transform .2s;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-    }
-    /* Hero */
-    .hero {
-      background: url('https://source.unsplash.com/1600x900/?winter,child,ski') center/cover no-repeat;
-      position: relative;
-      color: #fff;
-      text-align: center;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,.45);
-    }
-    .hero .container {
-      position: relative;
-      z-index: 2;
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin: 1rem 0 2rem;
-    }
-    /* Problem */
-    .problem-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-    .problem-grid svg {
-      width: 100%;
-      height: auto;
-    }
-    /* Cards */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    .card {
-      background: var(--card);
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-      transition: transform .3s;
-    }
-    .card:hover {
-      transform: translateY(-4px) scale(1.02);
-    }
-    .card h3 {
-      margin-bottom: .5rem;
-      color: var(--accent);
-    }
-    /* Scroll-stats */
-    .scroll-stats {
-      display: flex;
-      gap: 2rem;
-      overflow-x: auto;
-      padding-bottom: 1rem;
-    }
-    .stat {
-      min-width: 220px;
-      background: var(--card);
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-      text-align: center;
-    }
-    .stat .num {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
-    th, td {
-      padding: .5rem 1rem;
-      border: 1px solid #ddd;
-    }
-    th {
-      background: var(--accent);
-      color: #fff;
-    }
-    tr:nth-child(even) {
-      background: #f9f9f9;
-    }
-    /* Gallery */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-    .gal-item {
-      position: relative;
-      background: var(--card);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-      transition: transform .3s;
-    }
-    .gal-item:hover {
-      transform: scale(1.05);
-    }
-    .gal-item img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
-    .gal-item .title {
-      padding: 1rem;
-      font-weight: 600;
-    }
-    .tooltip {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0,0,0,.65);
-      color: #fff;
-      padding: .5rem;
-      font-size: .85rem;
-      opacity: 0;
-      transition: opacity .3s;
-    }
-    .gal-item:hover .tooltip {
-      opacity: 1;
-    }
-    /* Before/After */
-    .before-after {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-    .before-after img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    blockquote {
-      border-left: 4px solid var(--accent);
-      padding-left: 1rem;
-      margin: 1rem 0;
-      font-style: italic;
-    }
-    /* Materials */
-    .materials {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-    }
-    /* Contacts */
-    .contacts a {
-      margin: .5rem 1rem;
-      color: var(--accent);
-      text-decoration: none;
-    }
-    /* Animations */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* Mobile */
-    @media (max-width: 768px) {
-      .problem-grid,
-      .before-after {
-        grid-template-columns: 1fr;
-      }
-      h1 {
-        font-size: 1.8rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Методика ситуационно-игрового обучения юных лыжников-гонщиков</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Roboto Slab', 'serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            300: '#6ee7b7',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            /* Заменено на зимний пейзаж, который точно отображается */
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://sch1413sv.mskobr.ru/images/cms/data/preview/vankuverolimpiadalyzhi_1518715725.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .draggable {
+            cursor: move;
+        }
+        .drag-over {
+            background-color: #dbeafe; /* blue-100 */
+            border: 2px dashed #3b82f6; /* blue-500 */
+        }
+        .drop-zone {
+            min-height: 100px;
+            border: 2px dashed #d1d5db; /* gray-300 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 1rem;
+            transition: all 0.2s ease;
+        }
+        .drop-zone.drag-over {
+            background-color: #dbeafe;
+            border-color: #3b82f6;
+        }
+        .game-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .game-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .print-only { display: none; }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            body * { visibility: hidden; }
+            .print-area, .print-area * { visibility: visible; }
+            .print-area { position: absolute; left: 0; top: 0; width: 100%; }
+            .break-before { page-break-before: always; }
+        }
+        /* Стили для нового портфолио */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .print-section {
+            page-break-inside: avoid;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                padding: 20px;
+                font-size: 14px;
+            }
+            .section {
+                break-inside: avoid;
+            }
+        }
+        /* Стили для аккордеона в планировщике */
+        .accordion-header {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            margin-bottom: 5px;
+        }
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-top: none;
+            border-radius: 0 0 0.5rem 0.5rem;
+        }
+        .accordion.active .accordion-content {
+            display: block;
+        }
+        /* Стили для разделения планировщика */
+        .planner-container {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 200px); /* Примерная высота, можно адаптировать */
+        }
+        .planner-section {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
-<body>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Навигация -->
+    <nav class="no-print sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-serif font-bold text-primary-700">Методическое пособие</h1>
+                </div>
+                <div class="flex items-center space-x-1 sm:space-x-4">
+                    <button onclick="openTab('home')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button active">Главная</button>
+                    <button onclick="openTab('theory')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button">Теория и Методика</button>
+                    <button onclick="openTab('constructor')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button">Конструктор Игр</button>
+                    <button onclick="openTab('planner')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button">Планировщик</button>
+                    <button onclick="openTab('portfolio')" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500 tab-button">Портфолио</button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-<!-- 1. Hero -->
-<section class="hero">
-  <div class="container">
-    <h1>Ситуационно-игровая методика начального обучения юных лыжников-гонщиков</h1>
-    <p>Диссертация Манжула А.С. | 2025 | Экспериментальное обоснование эффективности</p>
-    <a class="btn" href="#materials">Скачать PDF методички</a>
-  </div>
-</section>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-<!-- 2. Problem -->
-<section id="problem">
-  <div class="container">
-    <h2>О проблеме</h2>
-    <div class="problem-grid fade-up">
-      <div>
-        <p>Традиционные тренировки 7-12-летних лыжников часто страдают монотонностью, падением мотивации и преждевременным утомлением.</p>
-        <p><strong>Решение:</strong> до 15 % времени тренировки заменяется на игровые упражнения в рамках «Конструктора игр», что повышает координацию, вовлечённость и удержание техники без давления.</p>
-      </div>
-      <div>
-        <!-- simple SVG icons -->
-        <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="#009ee3" opacity=".2"/><path d="M50 20v30m0 30v30m-30-50h30m30 0h30" stroke="#009ee3" stroke-width="4"/></svg>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- ВКЛАДКА 1: Главная -->
+        <section id="home" class="tab-content active">
+            <div class="hero-bg rounded-2xl shadow-xl p-8 md:p-12 mb-12 text-white">
+                <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6">Инструмент для работы тренера</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl">Методика ситуационно-игрового обучения юных лыжников-гонщиков</p>
+                <p class="text-lg mb-8 max-w-3xl">Это интерактивное пособие создано, чтобы помочь тренерам в работе с юными лыжниками-гонщиками (7–12 лет). Методика основана на ситуационно-игровом подходе, который делает тренировки увлекательными и эффективными.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 shadow-lg">
+                        <h3 class="text-xl font-serif font-semibold mb-3">Ведущая роль игры и ситуации</h3>
+                        <p>Обучение через решение двигательных задач, а не через механическое повторение.</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 shadow-lg">
+                        <h3 class="text-xl font-serif font-semibold mb-3">Осознанное обучение через ощущения</h3>
+                        <p>Формирование техники через чувство снега, баланса и ритма.</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 shadow-lg">
+                        <h3 class="text-xl font-serif font-semibold mb-3">Внутренняя мотивация и удовольствие</h3>
+                        <p>Создание позитивной атмосферы, где тренировка — это интересное событие.</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 shadow-lg">
+                        <h3 class="text-xl font-serif font-semibold mb-3">Вариативность и адаптивность</h3>
+                        <p>Развитие способности быстро адаптировать технику под меняющиеся условия.</p>
+                    </div>
+                </div>
 
-<!-- 3. Constructor -->
-<section id="constructor">
-  <div class="container">
-    <h2>Что такое «Конструктор игр»</h2>
-    <div class="cards fade-up">
-      <div class="card">
-        <h3>Подготовительная часть</h3>
-        <p>Разминка низкой интенсивности: «Лыжные салки», «Снежные узоры» — 10 мин.</p>
-      </div>
-      <div class="card">
-        <h3>Основная часть</h3>
-        <p>Целенаправленное развитие техники и силы: «Лабиринт», «Самокат», «Пингвины» — 20-25 мин.</p>
-      </div>
-      <div class="card">
-        <h3>Заключительная часть</h3>
-        <p>Спокойные игры на внимание и растяжку: «Тихий телефон», «Глухой телефон» — 5 мин.</p>
-      </div>
-    </div>
-  </div>
-</section>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" onclick="openTab('constructor'); return false;" class="px-6 py-3 bg-secondary-600 hover:bg-secondary-700 text-white font-medium rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1">
+                        Перейти к конструктору игр
+                    </a>
+                    <a href="#" onclick="openTab('planner'); return false;" class="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1">
+                        Открыть планировщик
+                    </a>
+                </div>
+            </div>
 
-<!-- 4. Stats -->
-<section id="stats">
-  <div class="container">
-    <h2>Цифры эксперимента (2022-2025)</h2>
-    <div class="scroll-stats fade-up">
-      <div class="stat">
-        <div class="num">+16,7 см</div>
-        <p>Y-тест баланса за 2 года</p>
-      </div>
-      <div class="stat">
-        <div class="num">0,7 → 4,0 м</div>
-        <p>Прокат на 1 лыже (d=3,16)</p>
-      </div>
-      <div class="stat">
-        <div class="num">−1,1 с</div>
-        <p>Челночный бег 3×10 м (p&lt;0,001)</p>
-      </div>
-    </div>
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                    <img src="https://невская2.рф/__scale/uploads/s/w/i/s/wisbnrcnuzmd/img/full_XTnANcRz.jpg?quality=85&width=827&webp=1" alt="Манжула Александр Сергеевич" class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-primary-200 shadow-md">
+                    <div>
+                        <h2 class="text-2xl font-serif font-bold text-gray-900 mb-2">Манжула Александр Сергеевич</h2>
+                        <p class="text-gray-700 mb-1"><strong>Квалификация:</strong> Тренер-преподаватель по лыжным гонкам СШОР №2 Невского района Санкт-Петербурга, Учитель физической культуры высшей категории, специалист по методике подготовки юных спортсменов.</p>
+                        <p class="text-gray-700 mb-1"><strong>Опыт:</strong> Более 10 лет успешной работы с детьми, создание и внедрение инновационных методик обучения.</p>
+                        <p class="text-gray-700 italic mt-3">"Обучение должно быть радостным и увлекательным процессом, где каждый ребенок чувствует себя победителем."</p>
+                        <div class="mt-4 flex items-center space-x-4">
+                            <span class="text-gray-600"><i class="fas fa-envelope mr-2"></i> manzhula205@yandex.ru</span>
+                            <a href="https://vk.com/aleksandr_manzhula" target="_blank" class="text-primary-600 hover:text-primary-800 flex items-center">
+                                <i class="fab fa-vk mr-2"></i> VKontakte
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <table class="fade-up">
-      <thead>
-        <tr><th>Показатель</th><th>2022</th><th>2025</th><th>Рост</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Y-тест баланса, см</td><td>196,4 ±33</td><td>213,1 ±26</td><td>+16,7</td></tr>
-        <tr><td>Прокат на 1 лыже, м</td><td>0,7 ±0,3</td><td>4,0 ±1,0</td><td>+3,3</td></tr>
-        <tr><td>Челночный бег, с</td><td>9,2 ±0,9</td><td>8,1 ±0,4</td><td>−1,1</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
+        <!-- ВКЛАДКА 2: Теория и методика -->
+        <section id="theory" class="tab-content">
+            <h1 class="text-3xl font-serif font-bold text-gray-900 mb-6">Теория и методика</h1>
+            
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+                <h2 class="text-2xl font-serif font-semibold text-gray-800 mb-4">Теоретико-методические основы</h2>
+                <h3 class="text-xl font-serif font-medium text-gray-700 mb-3">Концептуальные основы методики ситуационно-игрового обучения</h3>
+                <p class="mb-4">Разработанная методика опирается на ряд ключевых концепций:</p>
+                <ul class="list-disc pl-5 space-y-2 mb-6">
+                    <li><strong>Теория построения движений Н.А. Бернштейна:</strong> Акцент не на механическом повторении, а на задачном подходе. Лыжник решает двигательную задачу в изменяющихся условиях, что способствует формированию "акцептора результата действия".</li>
+                    <li><strong>Концепция "зоны ближайшего развития" Л.С. Выготского:</strong> Каждое задание должно быть чуть сложнее того, что ребенок может выполнить самостоятельно, но выполнимо с помощью, обеспечивая максимальный развивающий эффект.</li>
+                    <li><strong>Игра как ведущая деятельность:</strong> Для детей 7-12 лет игра является мощным средством формирования познавательных интересов, развития воображения и социальных навыков.</li>
+                    <li><strong>Принцип вариативности и нелинейности:</strong> Отказ от строгой линейной прогрессии. Освоение техники идёт по спирали: мы постоянно возвращаемся к базовым элементам на новом, более сложном уровне.</li>
+                </ul>
 
-<!-- 5. Gallery -->
-<section id="gallery">
-  <div class="container">
-    <h2>Галерея упражнений</h2>
-    <div class="gallery fade-up">
-      <div class="gal-item">
-        <img src="https://source.unsplash.com/400x300/?maze,winter" alt="Лабиринт">
-        <div class="title">Лабиринт</div>
-        <div class="tooltip">Развивает координацию и быструю смену направления</div>
-      </div>
-      <div class="gal-item">
-        <img src="https://source.unsplash.com/400x300/?snow,draw" alt="Снежные узоры">
-        <div class="title">Снежные узоры</div>
-        <div class="tooltip">Творческое задание на точность поворотов</div>
-      </div>
-      <div class="gal-item">
-        <img src="https://source.unsplash.com/400x300/?penguin,ice" alt="Пингвины на льдине">
-        <div class="title">Пингвины на льдине</div>
-        <div class="tooltip">Игра на баланс и командное взаимодействие</div>
-      </div>
-      <div class="gal-item">
-        <img src="https://source.unsplash.com/400x300/?ski,snow" alt="Самокат">
-        <div class="title">Самокат</div>
-        <div class="tooltip">Отработка одноопорного скольжения</div>
-      </div>
-      <div class="gal-item">
-        <img src="https://source.unsplash.com/400x300/?obstacle,winter" alt="Полоса препятствий">
-        <div class="title">Полоса препятствий</div>
-        <div class="tooltip">Комплексная техника и ловкость</div>
-      </div>
-    </div>
-  </div>
-</section>
+                <h3 class="text-xl font-serif font-medium text-gray-700 mb-3">Пять ключевых компетенций начальных двигательных навыков (НДН)</h3>
+                <p class="mb-4">Содержание "фундамента" технической подготовки раскрывается через пять ключевых компетенций:</p>
+                <ul class="list-disc pl-5 space-y-2 mb-6">
+                    <li><strong>Динамическое равновесие на скользящей опоре:</strong> Способность сохранять устойчивое положение тела при передвижении.</li>
+                    <li><strong>Ритмическая организация движений и координация работы рук и ног:</strong> Способность поддерживать оптимальный ритм и координировать работу конечностей.</li>
+                    <li><strong>Адаптивное управление движением:</strong> Способность оперативно изменять параметры движения в ответ на изменение условий.</li>
+                    <li><strong>Эффективное отталкивание ногами и палками:</strong> Создание поступательного движения за счёт оптимального приложения усилий.</li>
+                    <li><strong>Пространственная согласованность движений во время отталкивания:</strong> Интеграция всех элементов техники в единую структуру.</li>
+                </ul>
 
-<!-- 6. Video -->
-<section id="video">
-  <div class="container fade-up">
-    <h2>Видео-демо</h2>
-    <video controls poster="https://source.unsplash.com/800x450/?ski,kids">
-      <source src="" type="video/mp4">
-      Ваш браузер не поддерживает видео.
-    </video>
-    <p>30-секундный фрагмент тренировки 9-летних спортсменов</p>
-  </div>
-</section>
+                <h3 class="text-xl font-serif font-medium text-gray-700 mb-3">"Конструктор игр" как инструмент</h3>
+                <p class="mb-4">Центральным инструментом методики является "Конструктор игр". Он позволяет тренеру систематически подходить к разработке игровых упражнений, максимально соответствующих педагогическим задачам. Алгоритм создания игры включает:</p>
+                <ol class="list-decimal pl-5 space-y-2 mb-6">
+                    <li>Определение педагогической задачи (целевой блок).</li>
+                    <li>Выбор типа игры и двигательных действий (блок содержания).</li>
+                    <li>Определение условий проведения (блок организации).</li>
+                    <li>Установление уровня сложности (блок сложности).</li>
+                    <li>Формулирование правил.</li>
+                    <li>Проведение игры и анализ.</li>
+                </ol>
+                <p class="mb-6">Этот подход позволяет тренеру быть творцом тренировочного процесса, а не просто исполнителем готовых программ.</p>
 
-<!-- 7. Case -->
-<section id="case">
-  <div class="container">
-    <h2>Портфолио ребёнка (пример)</h2>
-    <div class="before-after fade-up">
-      <div>
-        <img src="https://source.unsplash.com/500x350/?ski,beginner" alt="До">
-        <p>До: прокат 0,7 м, Y-тест 196 см</p>
-      </div>
-      <div>
-        <img src="https://source.unsplash.com/500x350/?ski,professional" alt="После">
-        <p>После: прокат 4,0 м, Y-тест 213 см</p>
-      </div>
-    </div>
-    <blockquote>«…без давления, без слёз — только удовольствие от момента»</blockquote>
-  </div>
-</section>
+                <h3 class="text-xl font-serif font-medium text-gray-700 mb-3">Классификация игр</h3>
+                <p class="mb-4">Игры можно классифицировать по различным критериям:</p>
+                <ul class="list-disc pl-5 space-y-2 mb-6">
+                    <li><strong>По цели:</strong> Игры на равновесие, координацию, скорость, выносливость, ориентирование, развитие техники и т.д.</li>
+                    <li><strong>По характеру участия:</strong> Индивидуальные, парные, командные, малые группы.</li>
+                    <li><strong>По использованию инвентаря:</strong> Без инвентаря, с лыжами, с палками, с дополнительным инвентарем (флажки, мячи, мешочки и др.).</li>
+                    <li><strong>По возрасту:</strong> Для младших (7-8 лет), средних (9-10 лет), старших (11-12 лет) групп.</li>
+                    <li><strong>По сложности:</strong> Простые, средние, сложные.</li>
+                </ul>
 
-<!-- 8. Materials -->
-<section id="materials">
-  <div class="container">
-    <h2>Материалы для скачивания</h2>
-    <div class="materials fade-up">
-      <div class="card">
-        <h3>PDF «Методичка тренера»</h3>
-        <p>2 МБ, 32 стр., готовый план на 12 занятий</p>
-        <a class="btn" href="#" download>Скачать</a>
-      </div>
-      <div class="card">
-        <h3>Excel «Конструктор игр»</h3>
-        <p>Шаблон для подбора упражнений</p>
-        <a class="btn" href="#" download>Скачать</a>
-      </div>
-      <div class="card">
-        <h3>PNG «Шкала ВАШ для детей»</h3>
-        <p>Визуальная аналоговая шкала самочувствия</p>
-        <a class="btn" href="#" download>Скачать</a>
-      </div>
-    </div>
-  </div>
-</section>
+                <h3 class="text-xl font-serif font-medium text-gray-700 mb-3">Принципы отбора игр для занятий</h3>
+                <p class="mb-4">Выбор игр должен основываться на следующих принципах:</p>
+                <ul class="list-disc pl-5 space-y-2 mb-6">
+                    <li><strong>Соответствие возрасту и подготовленности:</strong> Игра должна быть доступна и интересна детям конкретного возраста.</li>
+                    <li><strong>Направленность на развитие конкретных компетенций:</strong> Каждая игра должна иметь четкую педагогическую цель.</li>
+                    <li><strong>Учет погодных условий и состояния снега:</strong> При выборе игры нужно учитывать температуру, ветер, состояние снежного покрова.</li>
+                    <li><strong>Обеспечение прогрессии сложности:</strong> Игры должны позволять постепенно увеличивать нагрузку.</li>
+                    <li><strong>Поддержание мотивации через разнообразие:</strong> Использовать разные виды игр, чтобы не было монотонности.</li>
+                </ul>
 
-<!-- 9. Contacts -->
-<section id="contacts">
-  <div class="container fade-up">
-    <h2>Контакты</h2>
-    <p>Если остались вопросы — пишите:</p>
-    <div class="contacts">
-      <a href="mailto:manzhula205@gmail.ru">manzhula205@gmail.ru</a>
-      <a href="https://t.me/ski_constructor" target="_blank">Telegram: @ski_constructor</a>
-    </div>
-    <a class="btn" href="mailto:manzhula205@gmail.ru?subject=Вопрос по методике">Задать вопрос автору</a>
-  </div>
-</section>
+                <h3 class="text-xl font-serif font-medium text-gray-700 mb-3">Структура игрового занятия</h3>
+                <p class="mb-4">Эффективное занятие состоит из трех частей:</p>
+                <ul class="list-disc pl-5 space-y-2 mb-6">
+                    <li><strong>Подготовительная часть (10–15 минут):</strong> Простые игры для разминки.</li>
+                    <li><strong>Основная часть (25–35 минут):</strong> 2–3 игры основной направленности.</li>
+                    <li><strong>Заключительная часть (5–10 минут):</strong> Спокойные игры, подведение итогов.</li>
+                </ul>
 
-<script>
-  // fade-up on scroll
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
+                <h3 class="text-xl font-serif font-medium text-gray-700 mb-3">Критерии оценки эффективности игр</h3>
+                <p class="mb-4">Эффективность игры можно оценить по следующим критериям:</p>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li><strong>Эмоциональная вовлеченность детей:</strong> Дети должны быть рады, активны, увлечены.</li>
+                    <li><strong>Уровень физической активности:</strong> Игра должна обеспечивать достаточный уровень нагрузки.</li>
+                    <li><strong>Реализация педагогической задачи:</strong> Дети должны работать над развитием целевых качеств.</li>
+                    <li><strong>Техническая реализация:</strong> Дети должны применять необходимые технические элементы.</li>
+                    <li><strong>Безопасность:</strong> Игра должна проводиться безопасно, без травм.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ВКЛАДКА 3: Конструктор игр -->
+        <section id="constructor" class="tab-content">
+            <h1 class="text-3xl font-serif font-bold text-gray-900 mb-6">Конструктор игр</h1>
+            
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+                <div class="mb-6">
+                    <label for="gameName" class="block text-sm font-medium text-gray-700 mb-1">Название игры</label>
+                    <input type="text" id="gameName" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                </div>
+                
+                <div class="mb-6">
+                    <label for="gameGoal" class="block text-sm font-medium text-gray-700 mb-1">Цель игры</label>
+                    <input type="text" id="gameGoal" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                </div>
+                
+                <div class="mb-6">
+                    <label for="playerCount" class="block text-sm font-medium text-gray-700 mb-1">Количество игроков</label>
+                    <input type="text" id="playerCount" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                </div>
+                
+                <div class="mb-6">
+                    <label for="gameDetails" class="block text-sm font-medium text-gray-700 mb-1">Описание / Детали</label>
+                    <textarea id="gameDetails" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"></textarea>
+                </div>
+                
+                <button id="generateBtn" class="w-full py-3 px-4 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium rounded-lg shadow-md transition duration-300 ease-in-out">
+                    Сгенерировать инструкцию
+                </button>
+            </div>
+
+            <div id="generatedGame" class="bg-white rounded-2xl shadow-lg p-6 mb-8 hidden">
+                <h2 class="text-2xl font-serif font-semibold text-gray-800 mb-4">Сгенерированная игра</h2>
+                <div id="generatedContent" class="prose max-w-none mb-6"></div>
+                <div class="flex space-x-4">
+                    <button id="saveGameBtn" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-md shadow transition duration-300 ease-in-out">
+                        Сохранить
+                    </button>
+                    <button id="cancelGameBtn" class="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white font-medium rounded-md shadow transition duration-300 ease-in-out">
+                        Отменить
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ВКЛАДКА 4: Планировщик -->
+        <section id="planner" class="tab-content">
+            <h1 class="text-3xl font-serif font-bold text-gray-900 mb-6">Планировщик</h1>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Левая половина: База игр -->
+                <div class="bg-white rounded-2xl shadow-lg p-6">
+                    <h2 class="text-2xl font-serif font-semibold text-gray-800 mb-4">База игр</h2>
+                    
+                    <!-- Фильтры в аккордеоне -->
+                    <div class="mb-6 space-y-2">
+                        <!-- Цель тренировки (теги) -->
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <i class="fas fa-chevron-down mr-2"></i> Цель тренировки (теги)
+                            </div>
+                            <div class="accordion-content">
+                                <div id="tagFilters" class="flex flex-wrap gap-2">
+                                    <!-- Теги будут добавлены здесь скриптом -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Возраст (лет) -->
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <i class="fas fa-chevron-down mr-2"></i> Возраст (лет)
+                            </div>
+                            <div class="accordion-content">
+                                <div id="ageFilters" class="flex flex-wrap gap-2">
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" class="filter-checkbox rounded text-primary-600 focus:ring-primary-500" data-filter="age" value="7,8">
+                                        <span class="ml-2 text-sm text-gray-700">7-8</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" class="filter-checkbox rounded text-primary-600 focus:ring-primary-500" data-filter="age" value="9,10">
+                                        <span class="ml-2 text-sm text-gray-700">9-10</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" class="filter-checkbox rounded text-primary-600 focus:ring-primary-500" data-filter="age" value="11,12">
+                                        <span class="ml-2 text-sm text-gray-700">11-12</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Количество участников -->
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <i class="fas fa-chevron-down mr-2"></i> Количество участников
+                            </div>
+                            <div class="accordion-content">
+                                <div id="groupFilters" class="flex flex-wrap gap-2">
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" class="filter-checkbox rounded text-primary-600 focus:ring-primary-500" data-filter="group" value="Индивидуально">
+                                        <span class="ml-2 text-sm text-gray-700">Индивидуально</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" class="filter-checkbox rounded text-primary-600 focus:ring-primary-500" data-filter="group" value="Пара">
+                                        <span class="ml-2 text-sm text-gray-700">Пара</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" class="filter-checkbox rounded text-primary-600 focus:ring-primary-500" data-filter="group" value="Малая группа">
+                                        <span class="ml-2 text-sm text-gray-700">Малая группа</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" class="filter-checkbox rounded text-primary-600 focus:ring-primary-500" data-filter="group" value="Команда">
+                                        <span class="ml-2 text-sm text-gray-700">Команда</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Инвентарь -->
+                        <div class="accordion">
+                            <div class="accordion-header">
+                                <i class="fas fa-chevron-down mr-2"></i> Инвентарь
+                            </div>
+                            <div class="accordion-content">
+                                <div id="equipmentFilters" class="flex flex-wrap gap-2">
+                                    <!-- Инвентарь будет добавлен здесь скриптом -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Поиск -->
+                        <div>
+                            <label for="searchInput" class="block text-sm font-medium text-gray-700 mb-2">Поиск</label>
+                            <input type="text" id="searchInput" placeholder="Поиск по названию или тегам..." class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                        </div>
+                    </div>
+                    
+                    <!-- Список игр -->
+                    <div id="gamesList" class="space-y-4 max-h-[calc(100vh-300px)] overflow-y-auto pr-2">
+                        <!-- Карточки игр будут добавлены здесь скриптом -->
+                    </div>
+                </div>
+
+                <!-- Правая половина: Планировщик -->
+                <div class="bg-white rounded-2xl shadow-lg p-6">
+                    <h2 class="text-2xl font-serif font-semibold text-gray-800 mb-4">Планировщик</h2>
+                    
+                    <!-- Конспект тренировки -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-serif font-medium text-gray-700 mb-3">Конспект тренировки</h3>
+                        
+                        <div class="mb-4">
+                            <label for="trainingName" class="block text-sm font-medium text-gray-700 mb-1">Название тренировки</label>
+                            <input type="text" id="trainingName" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                        </div>
+                        
+                        <!-- Разделение на секции с возможностью скролла -->
+                        <div class="planner-container">
+                            <!-- Разминка -->
+                            <div class="planner-section">
+                                <h4 class="font-medium text-gray-700 mb-2">Разминка</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                                    <div>
+                                        <label for="warmupDuration" class="block text-sm font-medium text-gray-600 mb-1">Продолжительность (мин)</label>
+                                        <input type="number" id="warmupDuration" min="0" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                                    </div>
+                                    <div>
+                                        <label for="warmupNotes" class="block text-sm font-medium text-gray-600 mb-1">Примечания</label>
+                                        <textarea id="warmupNotes" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"></textarea>
+                                    </div>
+                                </div>
+                                <div id="warmupDropZone" class="drop-zone">
+                                    <p class="text-center text-gray-500 text-sm">Перетащите игры сюда</p>
+                                    <div id="warmupGames" class="mt-2 space-y-2">
+                                        <!-- Игры будут добавлены здесь -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Основная часть -->
+                            <div class="planner-section">
+                                <h4 class="font-medium text-gray-700 mb-2">Основная часть</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                                    <div>
+                                        <label for="mainDuration" class="block text-sm font-medium text-gray-600 mb-1">Продолжительность (мин)</label>
+                                        <input type="number" id="mainDuration" min="0" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                                    </div>
+                                    <div>
+                                        <label for="mainNotes" class="block text-sm font-medium text-gray-600 mb-1">Примечания</label>
+                                        <textarea id="mainNotes" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"></textarea>
+                                    </div>
+                                </div>
+                                <div id="mainDropZone" class="drop-zone">
+                                    <p class="text-center text-gray-500 text-sm">Перетащите игры сюда</p>
+                                    <div id="mainGames" class="mt-2 space-y-2">
+                                        <!-- Игры будут добавлены здесь -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Заминка -->
+                            <div class="planner-section">
+                                <h4 class="font-medium text-gray-700 mb-2">Заминка</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                                    <div>
+                                        <label for="coolDownDuration" class="block text-sm font-medium text-gray-600 mb-1">Продолжительность (мин)</label>
+                                        <input type="number" id="coolDownDuration" min="0" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                                    </div>
+                                    <div>
+                                        <label for="coolDownNotes" class="block text-sm font-medium text-gray-600 mb-1">Примечания</label>
+                                        <textarea id="coolDownNotes" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"></textarea>
+                                    </div>
+                                </div>
+                                <div id="coolDownDropZone" class="drop-zone">
+                                    <p class="text-center text-gray-500 text-sm">Перетащите игры сюда</p>
+                                    <div id="coolDownGames" class="mt-2 space-y-2">
+                                        <!-- Игры будут добавлены здесь -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button onclick="printTrainingPlan()" class="mt-4 w-full py-2 px-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-md shadow transition duration-300 ease-in-out">
+                            Печать конспекта
+                        </button>
+                    </div>
+                    
+                    <!-- Микроцикл -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-serif font-medium text-gray-700 mb-3">Микроцикл (Неделя)</h3>
+                        
+                        <div class="mb-4">
+                            <label for="microcycleName" class="block text-sm font-medium text-gray-700 mb-1">Название микроцикла</label>
+                            <input type="text" id="microcycleName" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="trainingsPerWeek" class="block text-sm font-medium text-gray-700 mb-1">Количество тренировок в неделю</label>
+                            <select id="trainingsPerWeek" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3" selected>3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </div>
+                        
+                        <div id="microcycleDays" class="space-y-4">
+                            <!-- Дни микроцикла будут добавлены здесь скриптом -->
+                        </div>
+                        
+                        <button onclick="printMicrocycle()" class="mt-4 w-full py-2 px-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-md shadow transition duration-300 ease-in-out">
+                            Печать микроцикла
+                        </button>
+                    </div>
+                    
+                    <!-- Макроцикл -->
+                    <div>
+                        <h3 class="text-xl font-serif font-medium text-gray-700 mb-3">Макроцикл (Месяц)</h3>
+                        
+                        <div class="mb-4">
+                            <label for="macrocycleName" class="block text-sm font-medium text-gray-700 mb-1">Название макроцикла</label>
+                            <input type="text" id="macrocycleName" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                        </div>
+                        
+                        <div id="macrocycleWeeks" class="space-y-6">
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-2">Неделя 1</h4>
+                                <div>
+                                    <label for="ndnWeek1" class="block text-sm font-medium text-gray-600 mb-1">Начальный двигательный навык (НДН)</label>
+                                    <select id="ndnWeek1" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                                        <option value="Динамическое равновесие на скользящей опоре">Динамическое равновесие на скользящей опоре</option>
+                                        <option value="Ритмическая организация движений и координация работы рук и ног">Ритмическая организация движений и координация работы рук и ног</option>
+                                        <option value="Адаптивное управление движением">Адаптивное управление движением</option>
+                                        <option value="Эффективное отталкивание ногами и палками">Эффективное отталкивание ногами и палками</option>
+                                        <option value="Пространственная согласованность движений во время отталкивания">Пространственная согласованность движений во время отталкивания</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-2">Неделя 2</h4>
+                                <div>
+                                    <label for="ndnWeek2" class="block text-sm font-medium text-gray-600 mb-1">Начальный двигательный навык (НДН)</label>
+                                    <select id="ndnWeek2" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                                        <option value="Динамическое равновесие на скользящей опоре">Динамическое равновесие на скользящей опоре</option>
+                                        <option value="Ритмическая организация движений и координация работы рук и ног">Ритмическая организация движений и координация работы рук и ног</option>
+                                        <option value="Адаптивное управление движением">Адаптивное управление движением</option>
+                                        <option value="Эффективное отталкивание ногами и палками">Эффективное отталкивание ногами и палками</option>
+                                        <option value="Пространственная согласованность движений во время отталкивания">Пространственная согласованность движений во время отталкивания</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-2">Неделя 3</h4>
+                                <div>
+                                    <label for="ndnWeek3" class="block text-sm font-medium text-gray-600 mb-1">Начальный двигательный навык (НДН)</label>
+                                    <select id="ndnWeek3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                                        <option value="Динамическое равновесие на скользящей опоре">Динамическое равновесие на скользящей опоре</option>
+                                        <option value="Ритмическая организация движений и координация работы рук и ног">Ритмическая организация движений и координация работы рук и ног</option>
+                                        <option value="Адаптивное управление движением">Адаптивное управление движением</option>
+                                        <option value="Эффективное отталкивание ногами и палками">Эффективное отталкивание ногами и палками</option>
+                                        <option value="Пространственная согласованность движений во время отталкивания">Пространственная согласованность движений во время отталкивания</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-700 mb-2">Неделя 4</h4>
+                                <div>
+                                    <label for="ndnWeek4" class="block text-sm font-medium text-gray-600 mb-1">Начальный двигательный навык (НДН)</label>
+                                    <select id="ndnWeek4" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                                        <option value="Динамическое равновесие на скользящей опоре">Динамическое равновесие на скользящей опоре</option>
+                                        <option value="Ритмическая организация движений и координация работы рук и ног">Ритмическая организация движений и координация работы рук и ног</option>
+                                        <option value="Адаптивное управление движением">Адаптивное управление движением</option>
+                                        <option value="Эффективное отталкивание ногами и палками">Эффективное отталкивание ногами и палками</option>
+                                        <option value="Пространственная согласованность движений во время отталкивания">Пространственная согласованность движений во время отталкивания</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button onclick="printMacrocycle()" class="mt-4 w-full py-2 px-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-md shadow transition duration-300 ease-in-out">
+                            Печать макроцикла
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ВКЛАДКА 5: Портфолио -->
+        <section id="portfolio" class="tab-content">
+            <div class="max-w-6xl mx-auto p-6 bg-white shadow-lg mt-6">
+                <!-- Заголовок -->
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold">Портфолио юного лыжника</h1>
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">ФИО:</label>
+                            <input type="text" class="mt-1 w-full border-b border-gray-300 focus:border-blue-500 outline-none py-1">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Год рождения:</label>
+                            <input type="text" class="mt-1 w-full border-b border-gray-300 focus:border-blue-500 outline-none py-1">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Группа:</label>
+                            <input type="text" class="mt-1 w-full border-b border-gray-300 focus:border-blue-500 outline-none py-1">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- I. ФИЗИЧЕСКАЯ ПОДГОТОВЛЕННОСТЬ -->
+                <div class="section mb-8 print-section">
+                    <h2 class="text-xl font-bold mb-4 border-b border-gray-300 pb-2">I. ФИЗИЧЕСКАЯ ПОДГОТОВЛЕННОСТЬ</h2>
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="p-2 border border-gray-300">Тест</th>
+                                <th class="p-2 border border-gray-300">Дата</th>
+                                <th class="p-2 border border-gray-300">Рез-т 1</th>
+                                <th class="p-2 border border-gray-300">Рез-т 2</th>
+                                <th class="p-2 border border-gray-300">Рез-т 3</th>
+                                <th class="p-2 border border-gray-300">Лучший</th>
+                                <th class="p-2 border border-gray-300">▲/▼</th>
+                                <th class="p-2 border border-gray-300">Норматив</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-2 border border-gray-300">1. Челночный 3x10м (с)</td>
+                                <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300">
+                                    <select class="w-full outline-none">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="=">=</option>
+                                    </select>
+                                </td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-300">2. Отжимания (кол-во)</td>
+                                <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300">
+                                    <select class="w-full outline-none">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="=">=</option>
+                                    </select>
+                                </td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-300">3. Пресс за 1 мин (кол-во)</td>
+                                <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300">
+                                    <select class="w-full outline-none">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="=">=</option>
+                                    </select>
+                                </td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-300">4. Прыжок в длину (м)</td>
+                                <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300">
+                                    <select class="w-full outline-none">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="=">=</option>
+                                    </select>
+                                </td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-300">5. Пятнашки (очки)<br><span class="text-xs">(Ловец / Убегающий)</span></td>
+                                <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+                                <td class="p-2 border border-gray-300">
+                                    <div class="flex">
+                                        <span class="w-6">Л:</span><input type="text" class="flex-1 outline-none text-center">
+                                        <span class="w-6 ml-2">У:</span><input type="text" class="flex-1 outline-none text-center">
+                                    </div>
+                                </td>
+                                <td class="p-2 border border-gray-300">-</td>
+                                <td class="p-2 border border-gray-300">-</td>
+                                <td class="p-2 border border-gray-300">-</td>
+                                <td class="p-2 border border-gray-300">
+                                    <select class="w-full outline-none">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="=">=</option>
+                                    </select>
+                                </td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-300">6. Квадрант (кол-во)</td>
+                                <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300">
+                                    <select class="w-full outline-none">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="=">=</option>
+                                    </select>
+                                </td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-300">7. Кросс 1 км (мин:с)</td>
+                                <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300">-</td>
+                                <td class="p-2 border border-gray-300">-</td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300">
+                                    <select class="w-full outline-none">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="=">=</option>
+                                    </select>
+                                </td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-xs mt-2">▲/▼: + улучшение, - ухудшение, = стабильно (сравнение с пред. тестом).</p>
+                </div>
+
+                <!-- II. РАВНОВЕСИЕ И КООРДИНАЦИЯ -->
+                <div class="section mb-8 print-section">
+                    <h2 class="text-xl font-bold mb-4 border-b border-gray-300 pb-2">II. РАВНОВЕСИЕ И КООРДИНАЦИЯ</h2>
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="p-2 border border-gray-300">Тест</th>
+                                <th class="p-2 border border-gray-300">Дата</th>
+                                <th class="p-2 border border-gray-300">Параметры</th>
+                                <th class="p-2 border border-gray-300">Результат (Лев.)</th>
+                                <th class="p-2 border border-gray-300">Результат (Прав.)</th>
+                                <th class="p-2 border border-gray-300">▲/▼</th>
+                                <th class="p-2 border border-gray-300">Норматив</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-2 border border-gray-300">8. Y-тест (см / %)</td>
+                                <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+                                <td class="p-2 border border-gray-300">Перед. / Зад-мед. / Зад-лат.</td>
+                                <td class="p-2 border border-gray-300">
+                                    <input type="text" class="w-12 outline-none text-center"> / 
+                                    <input type="text" class="w-12 outline-none text-center"> / 
+                                    <input type="text" class="w-12 outline-none text-center">
+                                </td>
+                                <td class="p-2 border border-gray-300">
+                                    <input type="text" class="w-12 outline-none text-center"> / 
+                                    <input type="text" class="w-12 outline-none text-center"> / 
+                                    <input type="text" class="w-12 outline-none text-center">
+                                </td>
+                                <td class="p-2 border border-gray-300">
+                                    <select class="w-full outline-none">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="=">=</option>
+                                    </select>
+                                </td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-300">9. Прокат на 1 лыже (м)</td>
+                                <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+                                <td class="p-2 border border-gray-300">Длина проката</td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300">
+                                    <select class="w-full outline-none">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="=">=</option>
+                                    </select>
+                                </td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-300">10. Балансборд</td>
+                                <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+                                <td class="p-2 border border-gray-300">Время (с) / Касания (кол-во)</td>
+                                <td class="p-2 border border-gray-300">
+                                    <input type="text" class="w-12 outline-none text-center"> / 
+                                    <input type="text" class="w-12 outline-none text-center">
+                                </td>
+                                <td class="p-2 border border-gray-300">-</td>
+                                <td class="p-2 border border-gray-300">
+                                    <select class="w-full outline-none">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="=">=</option>
+                                    </select>
+                                </td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-300">11. Проба Ромберга</td>
+                                <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+                                <td class="p-2 border border-gray-300">Стабильность (Откр/Закр гл.)</td>
+                                <td class="p-2 border border-gray-300">
+                                    <input type="text" class="w-12 outline-none text-center"> / 
+                                    <input type="text" class="w-12 outline-none text-center">
+                                </td>
+                                <td class="p-2 border border-gray-300">-</td>
+                                <td class="p-2 border border-gray-300">
+                                    <select class="w-full outline-none">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="=">=</option>
+                                    </select>
+                                </td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- III. ЛЫЖНАЯ ПОДГОТОВКА -->
+                <div class="section mb-8 print-section">
+                    <h2 class="text-xl font-bold mb-4 border-b border-gray-300 pb-2">III. ЛЫЖНАЯ ПОДГОТОВКА</h2>
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="p-2 border border-gray-300">Тест / Метод</th>
+                                <th class="p-2 border border-gray-300">Дата</th>
+                                <th class="p-2 border border-gray-300">Результат / Параметры</th>
+                                <th class="p-2 border border-gray-300">▲/▼</th>
+                                <th class="p-2 border border-gray-300">Норматив</th>
+                                <th class="p-2 border border-gray-300">Прим.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-2 border border-gray-300">12. ОБХ 100м (с)</td>
+                                <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300">
+                                    <select class="w-full outline-none">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="=">=</option>
+                                    </select>
+                                </td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-gray-300">13. Биомеханика (Kinovea)<br><span class="text-xs">Пример: ООХ</span></td>
+                                <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+                                <td class="p-2 border border-gray-300">
+                                    Уг. колено: <input type="text" class="w-12 outline-none text-center">°<br>
+                                    Уг. бедро: <input type="text" class="w-12 outline-none text-center">°<br>
+                                    Уг. голень: <input type="text" class="w-12 outline-none text-center">°
+                                </td>
+                                <td class="p-2 border border-gray-300">
+                                    <select class="w-full outline-none">
+                                        <option value="+">+</option>
+                                        <option value="-">-</option>
+                                        <option value="=">=</option>
+                                    </select>
+                                </td>
+                                <td class="p-2 border border-gray-300">------------</td>
+                                <td class="p-2 border border-gray-300">Ход: <input type="text" class="w-full outline-none"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- IV. ПСИХОФИЗИОЛОГИЯ И МОТИВАЦИЯ -->
+                <div class="section mb-8 print-section">
+                    <h2 class="text-xl font-bold mb-4 border-b border-gray-300 pb-2">IV. ПСИХОФИЗИОЛОГИЯ И МОТИВАЦИЯ</h2>
+                    
+                    <div class="mb-6">
+                        <h3 class="font-semibold mb-2">14. ВАШ (Настроение/Самочувствие 0-10):</h3>
+                        <!-- Таблица для 10 тренировок -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="p-2 border border-gray-300">Тренировка</th>
+                                        <th class="p-2 border border-gray-300">Дата</th>
+                                        <th class="p-2 border border-gray-300">Настроение (1-10)</th>
+                                        <th class="p-2 border border-gray-300">Самочувствие (1-10)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Генерируем строки для 10 тренировок -->
+                                    <script>
+                                        document.write('<tr>');
+                                        for (let i = 1; i <= 10; i++) {
+                                            document.write(`
+                                                <tr>
+                                                    <td class="p-2 border border-gray-300 text-center">${i}</td>
+                                                    <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+                                                    <td class="p-2 border border-gray-300">
+                                                        <div class="mood-rating">
+                                                            <select class="w-full outline-none">
+                                                                <option value="">--</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                                <option value="6">6</option>
+                                                                <option value="7">7</option>
+                                                                <option value="8">8</option>
+                                                                <option value="9">9</option>
+                                                                <option value="10">10</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-2 border border-gray-300">
+                                                        <div class="mood-rating">
+                                                            <select class="w-full outline-none">
+                                                                <option value="">--</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                                <option value="6">6</option>
+                                                                <option value="7">7</option>
+                                                                <option value="8">8</option>
+                                                                <option value="9">9</option>
+                                                                <option value="10">10</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            `);
+                                        }
+                                    </script>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-2 text-sm">
+                            <span>Критические точки (День/Оценка): 
+                                <input type="text" class="w-16 outline-none border-b border-gray-300 mx-1"> < 4 баллов, 
+                                <input type="text" class="w-16 outline-none border-b border-gray-300 mx-1"> > 9 баллов
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold mb-2">15. Опросник мотивации (Ср. балл по группам):</h3>
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="bg-gray-100">
+                                    <th class="p-2 border border-gray-300">Группа мотивов</th>
+                                    <th class="p-2 border border-gray-300">Ср. балл</th>
+                                    <th class="p-2 border border-gray-300">▲/▼</th>
+                                    <th class="p-2 border border-gray-300">Топ-3 мотива</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="p-2 border border-gray-300">Достижение (4,8)</td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                    <td class="p-2 border border-gray-300">
+                                        <select class="w-full outline-none">
+                                            <option value="+">+</option>
+                                            <option value="-">-</option>
+                                            <option value="=">=</option>
+                                        </select>
+                                    </td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none"></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border border-gray-300">Совершенствование (5,12)</td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                    <td class="p-2 border border-gray-300">
+                                        <select class="w-full outline-none">
+                                            <option value="+">+</option>
+                                            <option value="-">-</option>
+                                            <option value="=">=</option>
+                                        </select>
+                                    </td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none"></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border border-gray-300">Социальные (2,3,6)</td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                    <td class="p-2 border border-gray-300">
+                                        <select class="w-full outline-none">
+                                            <option value="+">+</option>
+                                            <option value="-">-</option>
+                                            <option value="=">=</option>
+                                        </select>
+                                    </td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none"></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border border-gray-300">Здоровье (7)</td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                    <td class="p-2 border border-gray-300">
+                                        <select class="w-full outline-none">
+                                            <option value="+">+</option>
+                                            <option value="-">-</option>
+                                            <option value="=">=</option>
+                                        </select>
+                                    </td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none"></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border border-gray-300">Физич. ощущ. (1,9,14)</td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                    <td class="p-2 border border-gray-300">
+                                        <select class="w-full outline-none">
+                                            <option value="+">+</option>
+                                            <option value="-">-</option>
+                                            <option value="=">=</option>
+                                        </select>
+                                    </td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none"></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border border-gray-300">Процесс/Природа (1,11)</td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                    <td class="p-2 border border-gray-300">
+                                        <select class="w-full outline-none">
+                                            <option value="+">+</option>
+                                            <option value="-">-</option>
+                                            <option value="=">=</option>
+                                        </select>
+                                    </td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none"></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border border-gray-300">Внешние (10,13)</td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                    <td class="p-2 border border-gray-300">
+                                        <select class="w-full outline-none">
+                                            <option value="+">+</option>
+                                            <option value="-">-</option>
+                                            <option value="=">=</option>
+                                        </select>
+                                    </td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none"></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 border border-gray-300">Эмоц. регуляция (14,15)</td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none text-center"></td>
+                                    <td class="p-2 border border-gray-300">
+                                        <select class="w-full outline-none">
+                                            <option value="+">+</option>
+                                            <option value="-">-</option>
+                                            <option value="=">=</option>
+                                        </select>
+                                    </td>
+                                    <td class="p-2 border border-gray-300"><input type="text" class="w-full outline-none"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="mt-2 text-sm">
+                            <span>Дата опроса: <input type="date" class="outline-none border-b border-gray-300 mx-1"></span><br>
+                            <span>Что самое классное? (Из откр. вопрос): <input type="text" class="outline-none border-b border-gray-300 w-64 mx-1"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- V. ЗАМЕТКИ ТРЕНЕРА -->
+                <div class="section mb-8 print-section">
+                    <h2 class="text-xl font-bold mb-4 border-b border-gray-300 pb-2">V. ЗАМЕТКИ ТРЕНЕРА</h2>
+                    
+                    <div class="mb-4">
+                        <div class="font-semibold mb-1">• Сильные стороны:</div>
+                        <textarea class="w-full border border-gray-300 rounded p-2 outline-none focus:border-blue-500" rows="2"></textarea>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="font-semibold mb-1">• Зоны развития:</div>
+                        <textarea class="w-full border border-gray-300 rounded p-2 outline-none focus:border-blue-500" rows="2"></textarea>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="font-semibold mb-1">• Рекомендации (техника, нагрузка, мотивация):</div>
+                        <textarea class="w-full border border-gray-300 rounded p-2 outline-none focus:border-blue-500" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="font-semibold mb-1">• Достижения:</div>
+                        <textarea class="w-full border border-gray-300 rounded p-2 outline-none focus:border-blue-500" rows="2"></textarea>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="font-semibold mb-1">• Травмы/Болезни (Дата, что произошло, влияние):</div>
+                        <textarea class="w-full border border-gray-300 rounded p-2 outline-none focus:border-blue-500" rows="2"></textarea>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="font-semibold mb-1">• Взаимодействие в команде:</div>
+                        <textarea class="w-full border border-gray-300 rounded p-2 outline-none focus:border-blue-500" rows="2"></textarea>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="font-semibold mb-1">• Другие наблюдения:</div>
+                        <textarea class="w-full border border-gray-300 rounded p-2 outline-none focus:border-blue-500" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="flex justify-between mt-4">
+                        <div>
+                            <span>Дата заметки: <input type="date" class="outline-none border-b border-gray-300"></span>
+                        </div>
+                        <div>
+                            <span>Подпись тренера: <input type="text" class="outline-none border-b border-gray-300 w-40"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Кнопки действий -->
+                <div class="flex justify-center mt-8 no-print">
+                    <button onclick="printPortfolio()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded mr-4">
+                        Печать портфолио
+                    </button>
+                    <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded">
+                        Сохранить
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- База данных игр -->
+    <script>
+        const gamesDB = [
+            {"id": 1,"name": "Круговая охота","objective": "Развитие маневренности, скорости, умения быстро менять направление.","equipment": ["Лыжи"],"age": [7,8,9,10,11,12],"tags": ["Ловкость","Скорость","Маневренность","Торможение"],"group": "Команда","description": "Игроки делятся на две команды: «охотники» и «добыча». «добыча» располагается по кругу, «охотники» в центре. По сигналу «охотники» пытаются осалить «добычу», а «добыча» убегает по кругу. Осаленные меняются ролями.","variations": "Усложнение: Увеличить диаметр круга или передвигаться только на одной лыже. Облегчение: Разрешить передвигаться без палок."},
+            {"id": 2,"name": "Нападение акулы","objective": "Развитие ловкости, быстроты, умения маневрировать без палок.","equipment": ["Лыжи"],"age": [7,8,9,10,11,12],"tags": ["Ловкость","Скорость","Маневренность","Торможение"],"group": "Команда","description": "Выбирается один или два водящих «акулы». Остальные «рыбки» ставят палки в центре площадки. «Акулы» ловят «рыбок». Осаленная «рыбка» становится «акулёнком», берёт свои палки и помогает ловить остальных.","variations": "Усложнение: «Акулы» передвигаются только определённым стилем. Облегчение: Уменьшить размер площадки."},
+            {"id": 3,"name": "На одной лыже","objective": "Развитие чувства равновесия, укрепление мышц ног.","equipment": ["Лыжи"],"age": [7,8,9,10,11,12],"tags": ["Равновесие","Координация","Сила"],"group": "Индивидуально","description": "Участники передвигаются на одной лыже, отталкиваясь другой ногой (как на самокате). По сигналу ноги меняются. Можно проводить как упражнение или эстафету.","variations": "Усложнение: Увеличить крутизну склона. Облегчение: Уменьшить крутизну склона."},
+            {"id": 4,"name": "Кто дальше проскользит?","objective": "Совершенствование навыка скольжения, развитие умения эффективно отталкиваться.","equipment": ["Лыжи"],"age": [7,8,9,10,11,12],"tags": ["Техника","Скольжение","Сила"],"group": "Индивидуально","description": "Дети строятся в шеренгу. По сигналу разбегаются (5-6 шагов), сильно отталкиваются и скользят до полной остановки. Побеждает тот, кто проскользит дальше всех.","variations": "Усложнение: Увеличить скорость движения. Облегчение: Уменьшить скорость движения."},
+            {"id": 5,"name": "Буксиры","objective": "Развитие силы, выносливости, координации в парах.","equipment": ["Лыжи","Лыжные палки"],"age": [9,10,11,12],"tags": ["Сила","Выносливость","Координация"],"group": "Пары","description": "Участники в парах. Стоящий сзади подает концы своих палок вперед стоящему. Первый игрок тянет второго на дистанцию около 70 метров. На финише меняются местами.","variations": "Усложнение: Увеличить дистанцию, добавить препятствия. Облегчение: Уменьшить дистанцию."},
+            {"id": 6,"name": "Гусеница","objective": "Развитие координации коллективных действий, чувства ритма.","equipment": ["Лыжи","Лыжные палки"],"age": [9,10,11,12],"tags": ["Координация","Ритм","Команда"],"group": "Команда","description": "Команды стоят в колоннах. Каждый игрок соединен с соседом одной лыжной палкой. Задача - пройти дистанцию, не разорвав цепь.","variations": "Усложнение: Спринт с поворотами. Облегчение: Уменьшить дистанцию."},
+            {"id": 7,"name": "Догонялки по кругу","objective": "Развитие скорости, тактического мышления.","equipment": ["Лыжи","Лыжные палки"],"age": [9,10,11,12],"tags": ["Скорость","Тактика","Выносливость"],"group": "Малая группа","description": "4-6 лыжников стартуют из разных точек круговой лыжни. Каждый старается догнать идущего впереди. Осаленный выбывает.","variations": "Усложнение: Увеличить длину круга. Облегчение: Уменьшить длину круга."},
+            {"id": 8,"name": "Пятнашки","objective": "Развитие быстроты, ловкости, маневренности.","equipment": ["Лыжи"],"age": [7,8,9,10,11,12],"tags": ["Скорость","Ловкость","Маневренность"],"group": "Команда","description": "Классические пятнашки (салки) на лыжах. Можно играть с палками (касаться лыжи) или без (касаться рукой).","variations": "Усложнение: Ограничить площадку, ввести «домики». Облегчение: Увеличить площадку, играть без палок."},
+            {"id": 9,"name": "Слалом на равнине","objective": "Развитие ловкости, координации, умения управлять лыжами.","equipment": ["Лыжи","Флажки"],"age": [7,8,9,10,11,12],"tags": ["Ловкость","Координация","Техника","Повороты"],"group": "Индивидуально","description": "На ровной площадке расставляются флажки (палки) в шахматном порядке. Дети огибают их туда и обратно. Побеждает быстрейший.","variations": "Усложнение: Уменьшить расстояние между флажками. Облегчение: Увеличить расстояние."},
+            {"id": 10,"name": "Спуск тройками","objective": "Развитие равновесия, взаимовыручки, координации.","equipment": ["Лыжи"],"age": [9,10,11,12],"tags": ["Равновесие","Команда","Спуски"],"group": "Малая группа","description": "Дети в тройках спускаются с пологого склона. Двое на лыжах, третий между ними, обхватив их. Задача - спуститься, не упав.","variations": "Усложнение: Увеличить крутизну склона, добавить ворота. Облегчение: Выбрать очень пологий склон."},
+            {"id": 11,"name": "Лыжная точилка","objective": "эффективное отталкивание ногами и палками, ритмическая организация движений.","equipment": ["10 кеглей","2 ленты (старт/финиш 50 м)"],"age": [7,8,9,10,11,12],"tags": ["эффективное отталкивание","действие: касание","сюжет: точилка","сложность: средняя"],"group": "Индивидуально","description": "Дети стартуют по сигналу, преодолевают дистанцию 50 м, касаясь каждой из 10 кеглей, расположенных в шахматном порядке. Побеждает тот, кто первым пересечет финишную ленту.","variations": "Усложнение: Уменьшить расстояние между кеглями. Облегчение: Увеличить расстояние между кеглями."},
+            {"id": 12,"name": "Слалом с палками","objective": "Развитие ловкости, координации, умения управлять лыжами.","equipment": ["Лыжи","Лыжные палки"],"age": [7,8,9,10,11,12],"tags": ["Ловкость","Координация","Техника","Повороты"],"group": "Индивидуально","description": "Участники проходят слалом между палками, стоящими в шахматном порядке. Побеждает тот, кто быстрее пройдет дистанцию, не задев палки.","variations": "Усложнение: Уменьшить расстояние между палками. Облегчение: Увеличить расстояние между палками."},
+            {"id": 13,"name": "Змейка","objective": "Развитие ловкости, координации, умения управлять лыжами.","equipment": ["Лыжи","Конусы"],"age": [7,8,9,10,11,12],"tags": ["Ловкость","Координация","Техника","Повороты"],"group": "Индивидуально","description": "Участники проходят змейкой между конусами. Побеждает тот, кто быстрее пройдет дистанцию, не задев конусы.","variations": "Усложнение: Уменьшить расстояние между конусами. Облегчение: Увеличить расстояние между конусами."},
+            {"id": 14,"name": "Слалом на скорость","objective": "Развитие ловкости, скорости, умения выполнять повороты.","equipment": ["Лыжи","Конусы"],"age": [7,8,9,10,11,12],"tags": ["Ловкость","Скорость","Повороты"],"group": "Индивидуально","description": "Участник должен пройти между конусами на максимальной скорости, не задев их.","variations": "Усложнение: Уменьшить расстояние между конусами. Облегчение: Увеличить расстояние между конусами."},
+            {"id": 15,"name": "Прыжки через снежные комочки","objective": "Развитие прыгучести, координации.","equipment": ["Лыжи","Снежные комочки"],"age": [7,8,9,10,11,12],"tags": ["Прыгучесть","Координация","Сила"],"group": "Индивидуально","description": "На площадке раскладываются снежные комочки. Дети прыгают через них на лыжах.","variations": "Усложнение: Увеличить высоту комочков, прыгать на одной лыже. Облегчение: Уменьшить высоту, разрешить перешагивать."},
+            {"id": 16,"name": "У кого меньше шагов?","objective": "Развитие умения совершать длинные скользящие шаги.","equipment": ["Лыжи"],"age": [9,10,11,12],"tags": ["Техника","Скольжение","Сила"],"group": "Индивидуально","description": "Задача - пройти отрезок 10 метров, выполнив как можно меньшее количество накатистых шагов.","variations": "Усложнение: Увеличить дистанцию. Облегчение: Уменьшить дистанцию."},
+            {"id": 17,"name": "Снежный квест","objective": "Развитие логического мышления, ориентирование на местности, быстроты.","equipment": ["Карта","10 подсказок","5 станций с заданиями"],"age": [10,11,12],"tags": ["Логика","Ориентирование","Скорость"],"group": "Команда","description": "Команды получают карту с маршрутом. На каждой станции нужно выполнить задание, чтобы получить следующую подсказку.","variations": "Усложнение: Задания на время, уменьшение количества подсказок. Облегчение: Задания с помощниками."},
+            {"id": 18,"name": "Лыжный лабиринт","objective": "Развитие пространственного мышления, маневренности, точности управления лыжами.","equipment": ["Конусы","Лыжи"],"age": [9,10,11,12],"tags": ["Ориентирование","Маневренность","Точность"],"group": "Индивидуально","description": "Из конусов выстраивается сложный лабиринт. Задача — пройти его на лыжах на скорость, не задев ни одного конуса.","variations": "Усложнение: Уменьшить расстояние между конусами. Облегчение: Увеличить расстояние, убрать некоторые повороты."},
+            {"id": 19,"name": "Бросок в корзину","objective": "Развитие координации, точности броска, равновесия на лыжах.","equipment": ["Мешочки","Корзина"],"age": [7,8,9,10,11,12],"tags": ["Координация","Точность","Равновесие"],"group": "Индивидуально","description": "Участник с лыжами бросает мешочки в корзину с определённой дистанции.","variations": "Усложнение: Увеличить дистанцию. Облегчение: Уменьшить дистанцию."},
+            {"id": 20,"name": "Сбивание кеглей","objective": "Развитие координации, точности броска, равновесия на лыжах.","equipment": ["Мячи","Кегли"],"age": [7,8,9,10,11,12],"tags": ["Координация","Точность","Равновесие"],"group": "Индивидуально","description": "Участник с лыжами бросает мяч в корзину или сбивает кегли с определённой дистанции.","variations": "Усложнение: Увеличить дистанцию. Облегчение: Уменьшить дистанцию."},
+            {"id": 21,"name": "Снежная метка","objective": "Развитие меткости, координации.","equipment": ["Лыжи","Снежки","Мишень (круг или квадрат)"],"age": [7,8,9,10,11,12],"tags": ["Точность","Координация"],"group": "Индивидуально","description": "Участник с лыжами бросает снежки в мишень с определённой дистанции.","variations": "Усложнение: Уменьшить размер мишени. Облегчение: Увеличить размер мишени."},
+            {"id": 22,"name": "Слалом по цифрам","objective": "Развитие ловкости, координации, умения управлять лыжами, внимания.","equipment": ["Лыжи","Кегли с цифрами"],"age": [9,10,11,12],"tags": ["Ловкость","Координация","Техника","Повороты","Внимание"],"group": "Индивидуально","description": "Участник должен проехать по трассе и сбить кегли с определёнными цифрами в заданном порядке.","variations": "Усложнение: Увеличить количество кеглей. Облегчение: Уменьшить количество кеглей."},
+            {"id": 23,"name": "Сделай меньше шагов","objective": "Отработка широких накатистых шагов, эффективное использование скольжения.","equipment": ["Лыжи"],"age": [9,10,11,12],"tags": ["Техника","Скольжение","Сила"],"group": "Индивидуально","description": "Проходят дистанцию 40-60 метров, стараясь делать как можно меньше шагов. Побеждает участник с наименьшим числом шагов.","variations": "Усложнение: Увеличить дистанцию. Облегчение: Уменьшить дистанцию."},
+            {"id": 24,"name": "Следы на снегу","objective": "Развитие координации, точности.","equipment": ["Лыжи"],"age": [7,8,9,10,11,12],"tags": ["Координация","Точность","Техника"],"group": "Индивидуально","description": "Участники передвигаются на лыжах, стараясь идти по уже проложенным следам, не выходя за их границы.","variations": "+ крокодил на ногах; – один крокодил; + подъём 5°."},
+            {"id": 25,"name": "Самый быстрый круг","objective": "Развитие скоростной выносливости.","equipment": ["Лыжи","Секундомер"],"age": [10,11,12],"tags": ["Скорость","Выносливость","Командная игра"],"group": "Команда","description": "Команды по очереди проходят один и тот же круг на время. Побеждает команда с лучшим временем.","variations": "Усложнение: Увеличить длину круга. Облегчение: Уменьшить длину круга."},
+            {"id": 26,"name": "Эстафета с поворотами","objective": "Развитие скорости, ловкости, координации.","equipment": ["Лыжи","Конусы"],"age": [9,10,11,12],"tags": ["Скорость","Ловкость","Команда"],"group": "Команда","description": "Команды соревнуются в эстафете, где нужно преодолеть дистанцию с поворотами на лыжах. Побеждает команда, которая быстрее всех справится с заданием.","variations": "Усложнение: Увеличить количество поворотов. Облегчение: Уменьшить количество поворотов."},
+            {"id": 27,"name": "Лыжный слалом","objective": "Развитие ловкости и маневренности.","equipment": ["Лыжи","Конусы"],"age": [7,8,9,10,11,12],"tags": ["Ловкость","Маневренность","Техника"],"group": "Индивидуально","description": "Участник должен пройти змейкой между конусами, не задев их.","variations": "Усложнение: Уменьшить расстояние между конусами. Облегчение: Увеличить расстояние между конусами."},
+            {"id": 28,"name": "Гонки на лыжах с общим предметом","objective": "Развитие коллективной координации и синхронности.","equipment": ["Лыжи","Длинная палка"],"age": [9,10,11,12],"tags": ["Команда","Координация","Синхронность"],"group": "Команда","description": "Два или более участника держатся за одну длинную палку и передвигаются вместе, стараясь не потерять синхронность.","variations": "Усложнение: Увеличить количество участников. Облегчение: Уменьшить дистанцию."},
+            {"id": 29,"name": "Спуск с горки с препятствиями","objective": "Совершенствование техники спуска, развитие смелости.","equipment": ["Лыжи","Небольшие препятствия"],"age": [9,10,11,12],"tags": ["Спуски","Техника","Смелость"],"group": "Индивидуально","description": "Участники спускаются с пологой горки, преодолевая различные препятствия (например, обручи, ворота).","variations": "Усложнение: Увеличить крутизну склона, добавить больше препятствий. Облегчение: Уменьшить крутизну склона, уменьшить количество препятствий."},
+            {"id": 30,"name": "Туннель","objective": "Развитие координации, пространственного мышления.","equipment": ["Обручи"],"age": [9,10,11,12],"tags": ["Координация","Пространственное мышление"],"group": "Индивидуально","description": "Участник должен проехать, пролезая через обручи, установленные на разной высоте.","variations": "Усложнение: Обручи на разных высотах. Облегчение: Обручи одного диаметра."},
+            {"id": 31,"name": "Пролезь сквозь обруч","objective": "Последовательное увеличение сложности и адаптивное управление движением.","equipment": ["5 обручей (диаметр 0.8 → 0.6 → 0.4 м)"],"age": [9,10,11,12],"tags": ["Координация","Равновесие"],"group": "Индивидуально","description": "Участник едет и должен пролезть через каждый обруч, не коснувшись его.","variations": "Усложнение: Обручи на разных высотах. Облегчение: Обручи одного диаметра."},
+            {"id": 32,"name": "На одной лыже (эстафета)","objective": "Развитие равновесия, координации, укрепление мышц.","equipment": ["Лыжи","Лыжные палки"],"age": [9,10,11,12],"tags": ["Равновесие","Координация","Сила"],"group": "Команда","description": "Эстафета, где участники преодолевают дистанцию на одной лыже, отталкиваясь палками и свободной ногой.","variations": "Усложнение: Увеличить дистанцию. Облегчение: Уменьшить дистанцию."},
+            {"id": 33,"name": "Лыжные салки","objective": "Развитие скорости, ловкости, маневренности.","equipment": ["Лыжи","Повязка"],"age": [7,8,9,10,11,12],"tags": ["Скорость","Ловкость","Маневренность"],"group": "Команда","description": "Один или два участника с завязанными глазами (водящие) пытаются поймать остальных игроков, которые двигаются на лыжах. Пойманный игрок становится водящим.","variations": "Усложнение: Увеличить количество водящих. Облегчение: Уменьшить количество водящих."},
+            {"id": 34,"name": "Слепой квест","objective": "Развитие доверия, командной работы, пространственного мышления.","equipment": ["Лыжи","Повязка","Карта","Подсказки"],"age": [10,11,12],"tags": ["Доверие","Команда","Ориентирование"],"group": "Команда","description": "Один участник едет на лыжах с завязанными глазами, а другой участник направляет его голосом. Цель - дойти до финиша, не сбившись с пути.","variations": "Усложнение: Усложнить маршрут. Облегчение: Уменьшить дистанцию."},
+            {"id": 35,"name": "Гонки на лыжах с собаками","objective": "Развитие силовой выносливости, координации.","equipment": ["Лыжи","Собаки"],"age": [10,11,12],"tags": ["Выносливость","Сила","Координация"],"group": "Команда","description": "Команды соревнуются в гонке на лыжах, используя собак в качестве буксиров.","variations": "Усложнение: Увеличить дистанцию. Облегчение: Уменьшить дистанцию."},
+            {"id": 36,"name": "Лыжные санки","objective": "Развитие силы, выносливости, командной работы.","equipment": ["Лыжи","Санки"],"age": [9,10,11,12],"tags": ["Сила","Выносливость","Команда"],"group": "Команда","description": "Команды соревнуются в гонке на лыжах, где один участник тянет на санках другого. На финише меняются местами.","variations": "Усложнение: Увеличить вес санок. Облегчение: Уменьшить вес санок."},
+            {"id": 37,"name": "Красный свет, зеленый свет","objective": "Обучение контролю скорости и выполнению торможения.","equipment": ["Лыжи"],"age": [7,8,9,10,11,12],"tags": ["Торможение","Реакция","Контроль скорости"],"group": "Команда","description": "Классическая игра 'Red Light, Green Light'. Дети двигаются на 'Зеленый свет' и останавливаются на 'Красный свет', используя торможение 'плугом'.","variations": "Усложнение: Увеличить дистанцию. Облегчение: Уменьшить дистанцию."},
+            {"id": 38,"name": "С горки в воротца","objective": "Совершенствование контроля скорости и направления при спуске.","equipment": ["Лыжи","Лыжные палки"],"age": [7,8,9,10,11,12],"tags": ["Спуски","Техника","Ловкость"],"group": "Индивидуально","description": "Участники спускаются с пологой горки, проезжая через ворота из лыжных палок, не задев их.","variations": "Усложнение: Уменьшить ширину ворот. Облегчение: Увеличить ширину ворот."},
+            {"id": 39,"name": "Эстафета с каталогом","objective": "Развитие лыжных навыков, концентрации внимания.","equipment": ["Старый каталог","Лыжи"],"age": [9,10,11,12],"tags": ["Концентрация","Скорость","Команда"],"group": "Команда","description": "Участникам дается номер страницы в каталоге, которую они должны найти, вырвать и принести к финишу. Это развивает не только лыжные навыки, но и внимательность.","variations": "Усложнение: Увеличить дистанцию. Облегчение: Уменьшить дистанцию."},
+            {"id": 40,"name": "Снежный квест с QR-кодами","objective": "Развитие логического мышления, ориентирования на местности.","equipment": ["QR-коды","Смартфон"],"age": [10,11,12],"tags": ["Логика","Ориентирование","Тактика"],"group": "Команда","description": "Команды получают маршрут с QR-кодами. На каждой точке нужно отсканировать код и выполнить задание, чтобы получить следующую подсказку.","variations": "Усложнение: Задания на время. Облегчение: Задания с помощниками."},
+            {"id": 41,"name": "Снежный квест","objective": "Логика + лыжи.","equipment": ["5 QR-кодов"],"age": [10,11,12],"tags": ["Ориентирование","Логика"],"group": "Индивидуально","description": "Сканировать коды по маршруту.","variations": "Усложнение: 7 кодов. Облегчение: 3 кода."},
+            {"id": 42,"name": "Лыжный гольф","objective": "Развитие меткости, координации.","equipment": ["Лыжи","Мячи","Лунки"],"age": [9,10,11,12],"tags": ["Меткость","Координация","Техника"],"group": "Индивидуально","description": "Участники должны загнать мяч в лунку, используя лыжные палки. Побеждает тот, кто сделает это за наименьшее количество попыток.","variations": "Усложнение: Увеличить расстояние до лунки. Облегчение: Уменьшить расстояние."},
+            {"id": 43,"name": "Кубики-перекати","objective": "Скорость + точность.","equipment": ["20 кубиков"],"age": [9,10,11,12],"tags": ["Скорость","Точность"],"group": "Индивидуально","description": "Перекатить кубики в кольцо.","variations": "Усложнение: Уменьшить размер кольца. Облегчение: Увеличить размер кольца."},
+            {"id": 44,"name": "Лыжный кёрлинг","objective": "Развитие точности, силы броска.","equipment": ["Лыжи","Снежные камни","Мишень"],"age": [9,10,11,12],"tags": ["Точность","Сила","Команда"],"group": "Команда","description": "Команды по очереди бросают снежные камни, стараясь попасть в мишень. Побеждает команда, набравшая больше очков.","variations": "Усложнение: Увеличить расстояние до мишени. Облегчение: Уменьшить расстояние."},
+            {"id": 45,"name": "Следы на снегу","objective": "Развитие координации, точности.","equipment": ["Лыжи"],"age": [7,8,9,10,11,12],"tags": ["Координация","Точность","Техника"],"group": "Индивидуально","description": "Участники передвигаются на лыжах, стараясь идти по уже проложенным следам, не выходя за их границы.","variations": "+ крокодил на ногах; – один крокодил; + подъём 5°."},
+            {"id": 46,"name": "Кто быстрее схватит палку?","objective": "Развитие скорости, ловкости, реакции.","equipment": ["Лыжи","Лыжные палки"],"age": [7,8,9,10,11,12],"tags": ["Скорость","Ловкость","Реакция"],"group": "Команда","description": "Участники передвигаются на лыжах, стараясь догнать водящего и забрать у него палку. Пойманный игрок становится водящим.","variations": "Усложнение: Увеличить количество водящих. Облегчение: Уменьшить количество водящих."},
+            {"id": 47,"name": "Лыжные прыжки","objective": "Развитие прыгучести, координации, равновесия.","equipment": ["Лыжи","Небольшие трамплины"],"age": [10,11,12],"tags": ["Прыжки","Координация","Равновесие"],"group": "Индивидуально","description": "Участники соревнуются в прыжках с небольших трамплинов, стараясь приземлиться как можно дальше и сохранить равновесие.","variations": "Усложнение: Увеличить высоту трамплина. Облегчение: Уменьшить высоту трамплина."},
+            {"id": 48,"name": "Круговой слалом","objective": "Развитие маневренности, скорости, умения выполнять повороты.","equipment": ["Лыжи","Конусы"],"age": [7,8,9,10,11,12],"tags": ["Маневренность","Скорость","Повороты"],"group": "Индивидуально","description": "Участник проходит по кругу, огибая конусы. Побеждает тот, кто быстрее пройдет круг, не задев конусы.","variations": "Усложнение: Уменьшить расстояние между конусами. Облегчение: Увеличить расстояние между конусами."},
+            {"id": 49,"name": "Лыжный биатлон","objective": "Развитие меткости, координации, выносливости.","equipment": ["Лыжи","Мишени","Мячи"],"age": [10,11,12],"tags": ["Меткость","Координация","Выносливость"],"group": "Индивидуально","description": "Участник проезжает определённую дистанцию, затем выполняет броски мячами в мишени. За промахи начисляются штрафные круги.","variations": "Усложнение: Увеличить расстояние до мишени. Облегчение: Уменьшить расстояние."},
+            {"id": 50,"name": "Эстафета с препятствиями","objective": "Развитие ловкости, скорости, координации.","equipment": ["Лыжи","Препятствия"],"age": [9,10,11,12],"tags": ["Ловкость","Скорость","Команда"],"group": "Команда","description": "Команды соревнуются в эстафете, где нужно преодолеть полосу препятствий на лыжах. Побеждает команда, которая быстрее всех справится с заданием.","variations": "Усложнение: Увеличить сложность препятствий. Облегчение: Уменьшить сложность препятствий."},
+            {"id": 51,"name": "Лыжный кирпич","objective": "Динамическое равновесие.","equipment": ["Лыжи","Мягкие кубики"],"age": [9,10,11,12],"tags": ["Равновесие","Координация"],"group": "Индивидуально","description": "Игрок едет на одной лыже, держа 2 мягких кубика на ладонях, и не должен их уронить.","variations": "Усложнение: Кубики на голове. Облегчение: Разрешены короткие касания снега."},
+            {"id": 52,"name": "Пингвин","objective": "Баланс на прямых ногах.","equipment": ["Лыжи"],"age": [7,8,9],"tags": ["Равновесие","Техника"],"group": "Индивидуально","description": "Проехать 20 м без сгибания коленей, руки прижаты к телу.","variations": "Усложнение: Добавить пологий спуск. Облегчение: Разрешены руки в стороны."},
+            {"id": 53,"name": "Снежный крокодил","objective": "Динамическое равновесие, координация.","equipment": ["Лыжи","Мягкие кубики"],"age": [9,10,11,12],"tags": ["Равновесие","Координация"],"group": "Индивидуально","description": "Игрок едет на лыжах, держа 2 мягких кубика на ладонях, не должен их уронить. Усложнение: кубики на голове. Облегчение: разрешены короткие касания снега.","variations": "Усложнение: Кубики на голове. Облегчение: Разрешены короткие касания снега."},
+            {"id": 54,"name": "Качели","objective": "Развитие чувства равновесия, укрепление мышц ног.","equipment": ["Лыжи"],"age": [7,8,9,10,11,12],"tags": ["Равновесие","Координация","Сила"],"group": "Индивидуально","description": "Участник передвигается на одной лыже, отталкиваясь другой ногой. По сигналу ноги меняются. Можно проводить как упражнение или эстафету.","variations": "Усложнение: Увеличить дистанцию, добавить препятствия. Облегчение: Уменьшить дистанцию, разрешить буксируемому помогать."},
+            {"id": 55,"name": "Слалом с балансом","objective": "Развитие равновесия, координации, умения управлять лыжами.","equipment": ["Лыжи","Кегли","Мягкий мяч"],"age": [9,10,11,12],"tags": ["Равновесие","Координация","Техника"],"group": "Индивидуально","description": "Участник проходит слалом между кеглями, держа мягкий мяч на голове или в руках. При падении мяча игрок возвращается к началу.","variations": "Усложнение: Уменьшить расстояние между кеглями. Облегчение: Разрешить держать мяч в руках."},
+            {"id": 56,"name": "Эстафета с переносом предмета","objective": "Развитие координации, равновесия, командной работы.","equipment": ["Лыжи","Мягкие предметы (мешочки, мячи)"],"age": [9,10,11,12],"tags": ["Координация","Равновесие","Команда"],"group": "Команда","description": "Участники эстафеты передвигаются на лыжах, перенося предмет на ложке, в тазике или на голове. При падении предмета игрок возвращается к началу.","variations": "Усложнение: Увеличить дистанцию, уменьшить размер ёмкости. Облегчение: Уменьшить дистанцию, увеличить размер ёмкости."},
+            {"id": 57,"name": "Снежный лабиринт","objective": "Развитие пространственного мышления, ориентирования, маневренности.","equipment": ["Лыжи","Снежные валы или конусы"],"age": [10,11,12],"tags": ["Ориентирование","Маневренность","Логика"],"group": "Индивидуально","description": "Участник должен пройти по лабиринту, выложенному из снега или конусов, на лыжах, не задевая стенки.","variations": "Усложнение: Сделать лабиринт более запутанным. Облегчение: Сделать лабиринт проще."},
+            {"id": 58,"name": "Гонка на время","objective": "Развитие скорости, выносливости.","equipment": ["Лыжи","Секундомер"],"age": [9,10,11,12],"tags": ["Скорость","Выносливость"],"group": "Индивидуально","description": "Участник проходит определённую дистанцию на время. Можно проводить в формате гонки на выбывание.","variations": "Усложнение: Увеличить дистанцию. Облегчение: Уменьшить дистанцию."},
+            {"id": 59,"name": "Снежный хоккей","objective": "Командная игра, координация.","equipment": ["Лыжные палки","Мягкая шайба","Ворота"],"age": [9,10,11,12],"tags": ["Команда","Координация","Ловкость"],"group": "Команда","description": "Две команды играют в хоккей на лыжах. Вместо клюшек — лыжные палки. Цель — забить шайбу в ворота соперника.","variations": "Усложнение: Играть с двумя шайбами. Облегчение: Уменьшить размер площадки."},
+            {"id": 60,"name": "Снежная танцевальная площадка","objective": "Развитие координации, ритма, творческого мышления.","equipment": ["Лыжи","Музыка"],"age": [7,8,9,10,11,12],"tags": ["Координация","Ритм","Творчество"],"group": "Команда","description": "Игроки на лыжах танцуют под музыку, выполняя различные движения (повороты, шаги, прыжки).","variations": "Усложнение: Более сложные танцевальные движения. Облегчение: Простые движения."},
+            {"id": 61,"name": "Часовой","objective": "Интервальная скорость.","equipment": ["Лыжи","Конусы"],"age": [10,11,12],"tags": ["Скорость","Выносливость"],"group": "Индивидуально","description": "Участник проходит дистанцию с интервалами: 30 секунд максимальной скорости, 30 секунд легкого катания. Повторяется несколько раз.","variations": "Усложнение: Увеличить дистанцию, передвигаться без палок, добавить препятствия. Облегчение: Уменьшить дистанцию, использовать палки для опоры."},
+            {"id": 62,"name": "Лыжный спринт","objective": "Развитие максимальной скорости.","equipment": ["Лыжи"],"age": [9,10,11,12],"tags": ["Скорость","Выносливость"],"group": "Индивидуально","description": "Короткая дистанция (30-50 м) на максимальной скорости.","variations": "Усложнение: Проводить на пологом склоне, ограничить количество шагов для разгона. Облегчение: Проводить на идеально ровной лыжне."},
+            {"id": 63,"name": "Интервалы","objective": "Развитие анаэробной выносливости.","equipment": ["Лыжи"],"age": [10,11,12],"tags": ["Выносливость","Скорость"],"group": "Индивидуально","description": "Серия коротких спринтов (например, 6 x 30 м) с определённым временем отдыха между ними.","variations": "Усложнение: Увеличить количество интервалов. Облегчение: Уменьшить количество интервалов или увеличить отдых."},
+            {"id": 64,"name": "Лыжный кросс","objective": "Развитие аэробной выносливости.","equipment": ["Лыжи"],"age": [10,11,12],"tags": ["Выносливость","Техника"],"group": "Индивидуально","description": "Длительная пробежка на лыжах (например, 10-15 минут) по пересечённой местности.","variations": "Усложнение: Увеличить дистанцию. Облегчение: Уменьшить дистанцию."},
+            {"id": 65,"name": "Гонка на выживание","objective": "Развитие выносливости, тактического мышления.","equipment": ["Лыжи"],"age": [10,11,12],"tags": ["Выносливость","Тактика"],"group": "Команда","description": "Длинная дистанция (например, 1 км) с несколькими участниками. Задача - финишировать как можно выше.","variations": "Усложнение: Увеличить количество человек, добавить повороты. Облегчение: Уменьшить количество человек."},
+            {"id": 66,"name": "Эстафета на выносливость","objective": "Развитие выносливости в команде.","equipment": ["Лыжи"],"age": [10,11,12],"tags": ["Выносливость","Команда"],"group": "Команда","description": "Команды по 4-6 человек. Каждый участник пробегает определённую дистанцию, передавая эстафету следующему.","variations": "Усложнение: Увеличить дистанцию этапа. Облегчение: Уменьшить дистанцию этапа."},
+            {"id": 67,"name": "Снежный спринт с грузом","objective": "Развитие силовой выносливости.","equipment": ["Лыжи","Рюкзак с весом"],"age": [10,11,12],"tags": ["Сила","Выносливость"],"group": "Индивидуально","description": "Участник преодолевает спринт (например, 100 м) с рюкзаком определённого веса.","variations": "Усложнение: +1.5 кг; подъём 5°. Облегчение: -0.5 кг."},
+            {"id": 68,"name": "Снежный биатлон","objective": "Скорость + точность.","equipment": ["Лыжи","Мишени","Мячи"],"age": [10,11,12],"tags": ["Скорость","Точность","Выносливость"],"group": "Индивидуально","description": "Проехать 300 м, затем выполнить 5 бросков мячами в мишени. За промах - штрафное время или круги.","variations": "Усложнение: Увеличить расстояние до мишени. Облегчение: Уменьшить расстояние."},
+            {"id": 69,"name": "Лыжный гольф","objective": "Развитие меткости, координации.","equipment": ["Лыжи","Мячи для гольфа","Лунки"],"age": [9,10,11,12],"tags": ["Меткость","Координация","Техника"],"group": "Индивидуально","description": "Участники должны загнать мяч для гольфа в лунку, используя лыжные палки. Побеждает тот, кто сделает это за наименьшее количество попыток.","variations": "Усложнение: Увеличить расстояние до лунки. Облегчение: Уменьшить расстояние."},
+            {"id": 70,"name": "Снежная гонка с фонариками","objective": "командная игра; ориентирование.","equipment": ["фонарики","метроном","веревка"],"age": [11,12],"tags": ["ориентирование","команда"],"group": "команда","description": "команда бежит по маршруту с фонариком, освещая путь. остальные участники привязаны веревкой и следуют за ним. задача - пройти маршрут как можно быстрее.","variations": "Усложнение: Увеличить длину веревки. Облегчение: Уменьшить длину веревки."},
+            {"id": 71,"name": "Лыжный код-шахматник","objective": "логика и координация.","equipment": ["поле 6×6 клеток","12 кеглей-фигур"],"age": [10,11,12],"tags": ["логика","координация"],"group": "Индивидуально","description": "Участник едет по 'шахматному полю', обходя 'фигуры'. За каждое касание — штраф.","variations": "+ больше фигур; - меньше фигур; + ехать 'классикой'."},
+            {"id": 72,"name": "Снежный код-замок","objective": "Логика и координация.","equipment": ["6 замков-карманов","6 ключ-карточек","150 м трасса"],"age": [10,11,12],"tags": ["Координация","Логика"],"group": "Индивидуально","description": "Участник открывает каждый замок ключом, хранящимся в кармане.","variations": "Усложнение: Увеличить количество замков. Облегчение: Уменьшить количество замков."},
+            {"id": 73,"name": "Снежный крикет","objective": "Координация, командная игра.","equipment": ["1 мягкий мяч","3 «ворота» (кегли)"],"age": [9,10,11,12],"tags": ["Команда","Тактическое мышление"],"group": "Команда","description": "Команды по 3-4 человека. Цель — перебросить мяч через «ворота» соперника, используя лыжные палки.","variations": "Усложнение: Увеличить расстояние между воротами. Облегчение: Уменьшить расстояние."},
+            {"id": 74,"name": "Лыжный Форт Боярд","objective": "Комплексное прохождение полосы препятствий на скорость.","equipment": ["канат переправы","2 туннеля","3 прыжковых бугора","1 арка-ворота"],"age": [10,11,12],"tags": ["Выносливость","Скорость","Координация"],"group": "Команда","description": "Команда преодолевает полосу препятствий: канатная переправа, туннели, прыжки, арка. Побеждает команда, быстрее всех завершившая полосу.","variations": "Усложнение: Увеличить количество препятствий. Облегчение: Уменьшить количество препятствий."},
+            {"id": 75,"name": "Следопыт","objective": "Ориентирование.","equipment": ["Лыжи","Карта","Компас"],"age": [11,12],"tags": ["Ориентирование","Тактика"],"group": "Индивидуально","description": "Найти 3 «тайника» на местности, используя карту и компас. Задания на точках.","variations": "Усложнение: 5 тайников. Облегчение: 2 тайника."},
+            {"id": 76,"name": "Передача кристалла","objective": "Командное взаимодействие.","equipment": ["Лыжи","Флажок"],"age": [7,8,9,10,11,12],"tags": ["Команда","Скорость"],"group": "Команда","description": "Эстафета 4x100 м с передачей флажка-кристалла.","variations": "Усложнение: 6x100 м. Облегчение: 2x100 м."},
+            {"id": 77,"name": "Снежная метка","objective": "Развитие меткости, координации.","equipment": ["Лыжи","Снежки","Мишень (круг или квадрат)"],"age": [7,8,9,10,11,12],"tags": ["Точность","Координация"],"group": "Индивидуально","description": "Участник с лыжами бросает снежки в мишень с определённой дистанции.","variations": "Усложнение: Уменьшить размер мишени. Облегчение: Увеличить размер мишени."},
+            {"id": 78,"name": "Кубики-перекати","objective": "Скорость + точность.","equipment": ["20 кубиков"],"age": [9,10,11,12],"tags": ["Скорость","Точность"],"group": "Индивидуально","description": "Перекатить кубики в кольцо.","variations": "Усложнение: Уменьшить размер кольца. Облегчение: Увеличить размер кольца."},
+            {"id": 79,"name": "Снежный квест","objective": "Логика + лыжи.","equipment": ["5 QR-кодов"],"age": [10,11,12],"tags": ["Ориентирование","Логика"],"group": "Индивидуально","description": "Сканировать коды по маршруту.","variations": "Усложнение: 7 кодов. Облегчение: 3 кода."},
+            {"id": 80,"name": "Сбивание кеглей","objective": "Развитие координации, точности броска, равновесия на лыжах.","equipment": ["Мячи","Кегли"],"age": [7,8,9,10,11,12],"tags": ["Координация","Точность","Равновесие"],"group": "Индивидуально","description": "Участник с лыжами бросает мяч в корзину или сбивает кегли с определённой дистанции.","variations": "Усложнение: Увеличить дистанцию. Облегчение: Уменьшить дистанцию."},
+            {"id": 81,"name": "Передача кристалла","objective": "Командное взаимодействие.","equipment": ["Лыжи","Флажок"],"age": [7,8,9,10,11,12],"tags": ["Команда","Скорость"],"group": "Команда","description": "Эстафета 4x100 м с передачей флажка-кристалла.","variations": "Усложнение: 6x100 м. Облегчение: 2x100 м."},
+            {"id": 82,"name": "Снежный код-замок","objective": "Логика и координация.","equipment": ["6 замков-карманов","6 ключ-карточек","150 м трасса"],"age": [10,11,12],"tags": ["Координация","Логика"],"group": "Индивидуально","description": "Участник открывает каждый замок ключом, хранящимся в кармане.","variations": "Усложнение: Увеличить количество замков. Облегчение: Уменьшить количество замков."},
+            {"id": 83,"name": "Снежный крикет","objective": "Координация, командная игра.","equipment": ["1 мягкий мяч","3 «ворота» (кегли)"],"age": [9,10,11,12],"tags": ["Команда","Тактическое мышление"],"group": "Команда","description": "Команды по 3-4 человека. Цель — перебросить мяч через «ворота» соперника, используя лыжные палки.","variations": "Усложнение: Увеличить расстояние между воротами. Облегчение: Уменьшить расстояние."},
+            {"id": 84,"name": "Лыжный Форт Боярд","objective": "Комплексное прохождение полосы препятствий на скорость.","equipment": ["канат переправы","2 туннеля","3 прыжковых бугора","1 арка-ворота"],"age": [10,11,12],"tags": ["Выносливость","Скорость","Координация"],"group": "Команда","description": "Команда преодолевает полосу препятствий: канатная переправа, туннели, прыжки, арка. Побеждает команда, быстрее всех завершившая полосу.","variations": "Усложнение: Увеличить количество препятствий. Облегчение: Уменьшить количество препятствий."},
+            {"id": 85,"name": "Лыжный код-шахматник","objective": "логика и координация.","equipment": ["поле 6×6 клеток","12 кеглей-фигур"],"age": [10,11,12],"tags": ["логика","координация"],"group": "Индивидуально","description": "Участник едет по 'шахматному полю', обходя 'фигуры'. За каждое касание — штраф.","variations": "+ больше фигур; - меньше фигур; + ехать 'классикой'."},
+            {"id": 86,"name": "Снежная гонка с фонариками","objective": "командная игра; ориентирование.","equipment": ["фонарики","метроном","веревка"],"age": [11,12],"tags": ["ориентирование","команда"],"group": "команда","description": "команда бежит по маршруту с фонариком, освещая путь. остальные участники привязаны веревкой и следуют за ним. задача - пройти маршрут как можно быстрее.","variations": "Усложнение: Увеличить длину веревки. Облегчение: Уменьшить длину веревки."},
+            {"id": 87,"name": "Следопыт","objective": "Ориентирование.","equipment": ["Лыжи","Карта","Компас"],"age": [11,12],"tags": ["Ориентирование","Тактика"],"group": "Индивидуально","description": "Найти 3 «тайника» на местности, используя карту и компас. Задания на точках.","variations": "Усложнение: 5 тайников. Облегчение: 2 тайника."},
+            {"id": 88,"name": "Снежный хоккей","objective": "Командная игра, координация.","equipment": ["Лыжные палки","Мягкая шайба","Ворота"],"age": [9,10,11,12],"tags": ["Команда","Координация","Ловкость"],"group": "Команда","description": "Две команды играют в хоккей на лыжах. Вместо клюшек — лыжные палки. Цель — забить шайбу в ворота соперника.","variations": "Усложнение: Играть с двумя шайбами. Облегчение: Уменьшить размер площадки."},
+            {"id": 89,"name": "Лыжный кёрлинг","objective": "Развитие точности, силы броска.","equipment": ["Лыжи","Снежные камни","Мишень"],"age": [9,10,11,12],"tags": ["Точность","Сила","Команда"],"group": "Команда","description": "Команды по очереди бросают снежные камни, стараясь попасть в мишень. Побеждает команда, набравшая больше очков.","variations": "Усложнение: Увеличить расстояние до мишени. Облегчение: Уменьшить расстояние."},
+            {"id": 90,"name": "Гонки на лыжах с собаками","objective": "Развитие силовой выносливости, координации.","equipment": ["Лыжи","Собаки"],"age": [10,11,12],"tags": ["Выносливость","Сила","Координация"],"group": "Команда","description": "Команды соревнуются в гонке на лыжах, используя собак в качестве буксиров.","variations": "Усложнение: Увеличить дистанцию. Облегчение: Уменьшить дистанцию."},
+            {"id": 91,"name": "Лыжные санки","objective": "Развитие силы, выносливости, командной работы.","equipment": ["Лыжи","Санки"],"age": [9,10,11,12],"tags": ["Сила","Выносливость","Команда"],"group": "Команда","description": "Команды соревнуются в гонке на лыжах, где один участник тянет на санках другого. На финише меняются местами.","variations": "Усложнение: Увеличить вес санок. Облегчение: Уменьшить вес санок."},
+            {"id": 92,"name": "Следопыт","objective": "Ориентирование.","equipment": ["Лыжи","Карта","Компас"],"age": [11,12],"tags": ["Ориентирование","Тактика"],"group": "Индивидуально","description": "Найти 3 «тайника» на местности, используя карту и компас. Задания на точках.","variations": "Усложнение: 5 тайников. Облегчение: 2 тайника."},
+            {"id": 93,"name": "Снежный хоккей","objective": "Командная игра, координация.","equipment": ["Лыжные палки","Мягкая шайба","Ворота"],"age": [9,10,11,12],"tags": ["Команда","Координация","Ловкость"],"group": "Команда","description": "Две команды играют в хоккей на лыжах. Вместо клюшек — лыжные палки. Цель — забить шайбу в ворота соперника.","variations": "Усложнение: Играть с двумя шайбами. Облегчение: Уменьшить размер площадки."},
+            {"id": 94,"name": "Лыжный кёрлинг","objective": "Развитие точности, силы броска.","equipment": ["Лыжи","Снежные камни","Мишень"],"age": [9,10,11,12],"tags": ["Точность","Сила","Команда"],"group": "Команда","description": "Команды по очереди бросают снежные камни, стараясь попасть в мишень. Побеждает команда, набравшая больше очков.","variations": "Усложнение: Увеличить расстояние до мишени. Облегчение: Уменьшить расстояние."},
+            {"id": 95,"name": "Гонки на лыжах с собаками","objective": "Развитие силовой выносливости, координации.","equipment": ["Лыжи","Собаки"],"age": [10,11,12],"tags": ["Выносливость","Сила","Координация"],"group": "Команда","description": "Команды соревнуются в гонке на лыжах, используя собак в качестве буксиров.","variations": "Усложнение: Увеличить дистанцию. Облегчение: Уменьшить дистанцию."},
+            {"id": 96,"name": "Лыжный Форт Боярд","objective": "Комплексное прохождение полосы препятствий на скорость.","equipment": ["канат переправы","2 туннеля","3 прыжковых бугора","1 арка-ворота"],"age": [10,11,12],"tags": ["Выносливость","Скорость","Координация"],"group": "Команда","description": "Команда преодолевает полосу препятствий: канатная переправа, туннели, прыжки, арка. Побеждает команда, быстрее всех завершившая полосу.","variations": "Усложнение: Увеличить количество препятствий. Облегчение: Уменьшить количество препятствий."},
+            {"id": 97,"name": "Снежная танцевальная площадка","objective": "Развитие координации, ритма, творческого мышления.","equipment": ["Лыжи","Музыка"],"age": [7,8,9,10,11,12],"tags": ["Координация","Ритм","Творчество"],"group": "Команда","description": "Игроки на лыжах танцуют под музыку, выполняя различные движения (повороты, шаги, прыжки).","variations": "Усложнение: Более сложные танцевальные движения. Облегчение: Простые движения."},
+            {"id": 98,"name": "Часовой","objective": "Интервальная скорость.","equipment": ["Лыжи","Конусы"],"age": [10,11,12],"tags": ["Скорость","Выносливость"],"group": "Индивидуально","description": "Участник проходит дистанцию с интервалами: 30 секунд максимальной скорости, 30 секунд легкого катания. Повторяется несколько раз.","variations": "Усложнение: Увеличить дистанцию, передвигаться без палок, добавить препятствия. Облегчение: Уменьшить дистанцию, использовать палки для опоры."},
+            {"id": 99,"name": "Лыжный спринт","objective": "Развитие максимальной скорости.","equipment": ["Лыжи"],"age": [9,10,11,12],"tags": ["Скорость","Выносливость"],"group": "Индивидуально","description": "Короткая дистанция (30-50 м) на максимальной скорости.","variations": "Усложнение: Проводить на пологом склоне, ограничить количество шагов для разгона. Облегчение: Проводить на идеально ровной лыжне."},
+            {"id": 100,"name": "Снежный квест","objective": "комплексное применение всех навыков в одном маршруте.","equipment": ["10 станций","каждая тренирует одно качество (равновесие, скорость, ритм, точность, логика, командная работа, ориентирование, прыжки, торможение, преследование)"],"age": [10,11,12],"tags": ["Равновесие","Скорость","Ритм","Точность","Логика","Командная работа","Ориентирование","Прыжки","Торможение","Преследование"],"group": "Команда","description": "Завершающая игра. Десять станций, на каждой из которых нужно продемонстрировать один из навыков: равновесие, скорость, ритм, точность, логика, командная работа, ориентирование, прыжки, торможение и преследование. Фиксируется общее время прохождения.","variations": "Усложнение: Увеличить количество станций. Облегчение: Уменьшить количество станций."}
+        ];
+
+        // Инициализация данных для фильтров
+        const allTags = [...new Set(gamesDB.flatMap(game => game.tags))];
+        const allEquipment = [...new Set(gamesDB.flatMap(game => game.equipment))];
+
+        // Хранилище для перетаскиваемых игр в планировщике
+        let plannerGames = {
+            warmup: [],
+            main: [],
+            coolDown: []
+        };
+
+        // Хранилище для сгенерированных игр
+        let generatedGames = [];
+
+        // Открытие вкладки
+        function openTab(tabName) {
+            // Скрыть все вкладки
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            // Убрать активный класс с кнопок
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            
+            // Показать нужную вкладку
+            document.getElementById(tabName).classList.add('active');
+            // Добавить активный класс на кнопку
+            event.target.classList.add('active');
+            
+            // Если открыта вкладка планировщика, инициализируем фильтры и список игр
+            if (tabName === 'planner') {
+                initFilters();
+                filterGames();
+                initAccordions(); // Инициализация аккордеонов
+            }
+        }
+
+        // Инициализация аккордеонов в планировщике
+        function initAccordions() {
+            const accordions = document.querySelectorAll('.accordion');
+            accordions.forEach(accordion => {
+                const header = accordion.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    accordion.classList.toggle('active');
+                    const icon = header.querySelector('i');
+                    if (accordion.classList.contains('active')) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    } else {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                });
+            });
+        }
+
+        // Инициализация фильтров в планировщике
+        function initFilters() {
+            const tagFiltersContainer = document.getElementById('tagFilters');
+            const equipmentFiltersContainer = document.getElementById('equipmentFilters');
+
+            // Очистка контейнеров
+            tagFiltersContainer.innerHTML = '';
+            equipmentFiltersContainer.innerHTML = '';
+
+            // Добавление тегов
+            allTags.forEach(tag => {
+                const label = document.createElement('label');
+                label.className = 'inline-flex items-center';
+                label.innerHTML = `
+                    <input type="checkbox" class="filter-checkbox rounded text-primary-600 focus:ring-primary-500" data-filter="tag" value="${tag}">
+                    <span class="ml-2 text-sm text-gray-700">${tag}</span>
+                `;
+                tagFiltersContainer.appendChild(label);
+            });
+
+            // Добавление инвентаря
+            allEquipment.forEach(item => {
+                const label = document.createElement('label');
+                label.className = 'inline-flex items-center';
+                label.innerHTML = `
+                    <input type="checkbox" class="filter-checkbox rounded text-primary-600 focus:ring-primary-500" data-filter="equipment" value="${item}">
+                    <span class="ml-2 text-sm text-gray-700">${item}</span>
+                `;
+                equipmentFiltersContainer.appendChild(label);
+            });
+
+            // Добавление обработчиков событий для фильтров
+            document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', filterGames);
+            });
+
+            // Добавление обработчика для поиска
+            document.getElementById('searchInput').addEventListener('input', filterGames);
+        }
+
+        // Фильтрация игр
+        function filterGames() {
+            const selectedTags = Array.from(document.querySelectorAll('.filter-checkbox[data-filter="tag"]:checked')).map(cb => cb.value);
+            const selectedAges = Array.from(document.querySelectorAll('.filter-checkbox[data-filter="age"]:checked')).map(cb => cb.value);
+            const selectedGroups = Array.from(document.querySelectorAll('.filter-checkbox[data-filter="group"]:checked')).map(cb => cb.value);
+            const selectedEquipment = Array.from(document.querySelectorAll('.filter-checkbox[data-filter="equipment"]:checked')).map(cb => cb.value);
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            const filteredGames = gamesDB.filter(game => {
+                const matchesTags = selectedTags.length === 0 || selectedTags.some(tag => game.tags.includes(tag));
+                const matchesAge = selectedAges.length === 0 || selectedAges.some(age => {
+                    const [min, max] = age.split(',').map(Number);
+                    return game.age.some(a => a >= min && a <= max);
+                });
+                const matchesGroup = selectedGroups.length === 0 || selectedGroups.includes(game.group);
+                const matchesEquipment = selectedEquipment.length === 0 || selectedEquipment.some(item => game.equipment.includes(item));
+                const matchesSearch = game.name.toLowerCase().includes(searchTerm) || game.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+
+                return matchesTags && matchesAge && matchesGroup && matchesEquipment && matchesSearch;
+            });
+
+            renderGamesList(filteredGames);
+        }
+
+        // Отображение списка игр
+        function renderGamesList(games) {
+            const gamesListContainer = document.getElementById('gamesList');
+            gamesListContainer.innerHTML = '';
+
+            if (games.length === 0) {
+                gamesListContainer.innerHTML = '<p class="text-gray-500 text-center">Игры не найдены</p>';
+                return;
+            }
+
+            games.forEach(game => {
+                const gameCard = document.createElement('div');
+                gameCard.className = 'game-card bg-gray-50 rounded-xl p-4 shadow cursor-move draggable';
+                gameCard.setAttribute('draggable', 'true');
+                gameCard.dataset.gameId = game.id;
+                gameCard.innerHTML = `
+                    <h3 class="font-serif font-semibold text-gray-800 mb-2">${game.name}</h3>
+                    <p class="text-sm text-gray-600 mb-1"><strong>Цель:</strong> ${game.objective}</p>
+                    <p class="text-sm text-gray-600 mb-1"><strong>Возраст:</strong> ${game.age.join(', ')} лет</p>
+                    <p class="text-sm text-gray-600 mb-1"><strong>Инвентарь:</strong> ${game.equipment.join(', ')}</p>
+                    <div class="flex flex-wrap gap-1 mt-2">
+                        ${game.tags.map(tag => `<span class="px-2 py-1 bg-primary-100 text-primary-800 text-xs rounded-full">${tag}</span>`).join('')}
+                    </div>
+                    <p class="text-sm text-gray-700 mt-2"><strong>Описание:</strong> ${game.description}</p>
+                    <p class="text-xs text-gray-500 mt-2"><strong>Варианты:</strong> ${game.variations}</p>
+                `;
+                gamesListContainer.appendChild(gameCard);
+            });
+
+            // Добавление обработчиков событий для перетаскивания
+            addDragEvents();
+        }
+
+        // Добавление обработчиков событий для перетаскивания
+        function addDragEvents() {
+            const draggables = document.querySelectorAll('.draggable');
+            const dropZones = document.querySelectorAll('.drop-zone');
+
+            draggables.forEach(draggable => {
+                draggable.addEventListener('dragstart', dragStart);
+                draggable.addEventListener('dragend', dragEnd);
+            });
+
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', dragOver);
+                zone.addEventListener('dragenter', dragEnter);
+                zone.addEventListener('dragleave', dragLeave);
+                zone.addEventListener('drop', drop);
+            });
+        }
+
+        // Обработчики событий перетаскивания
+        let draggedItem = null;
+
+        function dragStart(e) {
+            draggedItem = this;
+            setTimeout(() => this.classList.add('opacity-50'), 0);
+        }
+
+        function dragEnd() {
+            this.classList.remove('opacity-50');
+            draggedItem = null;
+        }
+
+        function dragOver(e) {
+            e.preventDefault();
+        }
+
+        function dragEnter(e) {
+            e.preventDefault();
+            this.classList.add('drag-over');
+        }
+
+        function dragLeave() {
+            this.classList.remove('drag-over');
+        }
+
+        function drop(e) {
+            e.preventDefault();
+            this.classList.remove('drag-over');
+
+            if (draggedItem) {
+                // Определяем, в какую зону перетащили
+                const dropZoneId = this.id;
+                const gameId = parseInt(draggedItem.dataset.gameId);
+                const game = gamesDB.find(g => g.id === gameId);
+
+                if (game && (dropZoneId === 'warmupDropZone' || dropZoneId === 'mainDropZone' || dropZoneId === 'coolDownDropZone')) {
+                    // Определяем ключ для массива
+                    const key = dropZoneId.replace('DropZone', '');
+                    
+                    // Проверяем, есть ли уже такая игра в этой зоне
+                    if (!plannerGames[key].some(g => g.id === game.id)) {
+                        // Добавляем игру в хранилище
+                        plannerGames[key].push(game);
+                        // Обновляем отображение
+                        renderPlannerGames();
+                    }
+                }
+            }
+        }
+
+        // Отображение игр в планировщике
+        function renderPlannerGames() {
+            ['warmup', 'main', 'coolDown'].forEach(zone => {
+                const container = document.getElementById(`${zone}Games`);
+                container.innerHTML = '';
+
+                plannerGames[zone].forEach((game, index) => {
+                    const gameElement = document.createElement('div');
+                    gameElement.className = 'flex items-center justify-between bg-white p-2 rounded-md shadow-sm';
+                    gameElement.innerHTML = `
+                        <span class="text-sm font-medium">${game.name}</span>
+                        <button onclick="removeGameFromPlanner('${zone}', ${index})" class="text-red-500 hover:text-red-700">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    container.appendChild(gameElement);
+                });
+            });
+        }
+
+        // Удаление игры из планировщика
+        function removeGameFromPlanner(zone, index) {
+            plannerGames[zone].splice(index, 1);
+            renderPlannerGames();
+        }
+
+        // Инициализация дней микроцикла
+        function initMicrocycleDays() {
+            const trainingsPerWeekSelect = document.getElementById('trainingsPerWeek');
+            const microcycleDaysContainer = document.getElementById('microcycleDays');
+            
+            trainingsPerWeekSelect.addEventListener('change', () => {
+                const count = parseInt(trainingsPerWeekSelect.value);
+                microcycleDaysContainer.innerHTML = '';
+                
+                for (let i = 1; i <= count; i++) {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.className = 'p-4 border border-gray-200 rounded-lg';
+                    dayDiv.innerHTML = `
+                        <h4 class="font-medium text-gray-700 mb-2">Тренировка ${i}</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <label for="day${i}" class="block text-sm font-medium text-gray-600 mb-1">День недели</label>
+                                <select id="day${i}" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                                    <option value="Понедельник">Понедельник</option>
+                                    <option value="Вторник">Вторник</option>
+                                    <option value="Среда">Среда</option>
+                                    <option value="Четверг">Четверг</option>
+                                    <option value="Пятница">Пятница</option>
+                                    <option value="Суббота">Суббота</option>
+                                    <option value="Воскресенье">Воскресенье</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="quality${i}" class="block text-sm font-medium text-gray-600 mb-1">Развиваемое качество</label>
+                                <select id="quality${i}" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
+                                    <option value="Равновесие">Равновесие</option>
+                                    <option value="Координация">Координация</option>
+                                    <option value="Скорость">Скорость</option>
+                                    <option value="Реакция">Реакция</option>
+                                    <option value="Выносливость">Выносливость</option>
+                                    <option value="Техника">Техника</option>
+                                    <option value="Сила">Сила</option>
+                                    <option value="Ловкость">Ловкость</option>
+                                    <option value="Ориентирование">Ориентирование</option>
+                                </select>
+                            </div>
+                        </div>
+                    `;
+                    microcycleDaysContainer.appendChild(dayDiv);
+                }
+            });
+            
+            // Инициализация по умолчанию (3 тренировки)
+            trainingsPerWeekSelect.value = '3';
+            trainingsPerWeekSelect.dispatchEvent(new Event('change'));
+        }
+
+        // Печать конспекта тренировки
+        function printTrainingPlan() {
+            const trainingName = document.getElementById('trainingName').value || 'Конспект тренировки';
+            const warmupDuration = document.getElementById('warmupDuration').value || '0';
+            const warmupNotes = document.getElementById('warmupNotes').value || '';
+            const mainDuration = document.getElementById('mainDuration').value || '0';
+            const mainNotes = document.getElementById('mainNotes').value || '';
+            const coolDownDuration = document.getElementById('coolDownDuration').value || '0';
+            const coolDownNotes = document.getElementById('coolDownNotes').value || '';
+
+            let printContent = `
+                <div class="print-area">
+                    <h1 class="text-2xl font-serif font-bold mb-4">${trainingName}</h1>
+                    <div class="mb-6">
+                        <h2 class="text-xl font-serif font-semibold mb-2">Разминка (${warmupDuration} мин)</h2>
+                        <p class="mb-2">${warmupNotes}</p>
+                        <ul class="list-disc pl-5">
+            `;
+            plannerGames.warmup.forEach(game => {
+                printContent += `<li>${game.name}: ${game.description}</li>`;
+            });
+            printContent += `
+                        </ul>
+                    </div>
+                    <div class="mb-6">
+                        <h2 class="text-xl font-serif font-semibold mb-2">Основная часть (${mainDuration} мин)</h2>
+                        <p class="mb-2">${mainNotes}</p>
+                        <ul class="list-disc pl-5">
+            `;
+            plannerGames.main.forEach(game => {
+                printContent += `<li>${game.name}: ${game.description}</li>`;
+            });
+            printContent += `
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-serif font-semibold mb-2">Заминка (${coolDownDuration} мин)</h2>
+                        <p class="mb-2">${coolDownNotes}</p>
+                        <ul class="list-disc pl-5">
+            `;
+            plannerGames.coolDown.forEach(game => {
+                printContent += `<li>${game.name}: ${game.description}</li>`;
+            });
+            printContent += `
+                        </ul>
+                    </div>
+                </div>
+            `;
+
+            printSection(printContent);
+        }
+
+        // Печать микроцикла
+        function printMicrocycle() {
+            const microcycleName = document.getElementById('microcycleName').value || 'Микроцикл';
+            const trainingsPerWeek = document.getElementById('trainingsPerWeek').value;
+
+            let printContent = `
+                <div class="print-area">
+                    <h1 class="text-2xl font-serif font-bold mb-4">${microcycleName}</h1>
+                    <h2 class="text-xl font-serif font-semibold mb-4">Микроцикл (Неделя)</h2>
+            `;
+
+            for (let i = 1; i <= trainingsPerWeek; i++) {
+                const day = document.getElementById(`day${i}`)?.value || `День ${i}`;
+                const quality = document.getElementById(`quality${i}`)?.value || 'Не указано';
+                printContent += `
+                    <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                        <h3 class="font-medium text-gray-700 mb-2">${day} - ${quality}</h3>
+                        <!-- Здесь можно добавить зону для перетаскивания игр, если она будет реализована -->
+                    </div>
+                `;
+            }
+
+            printContent += `</div>`;
+            printSection(printContent);
+        }
+
+        // Печать макроцикла
+        function printMacrocycle() {
+            const macrocycleName = document.getElementById('macrocycleName').value || 'Макроцикл';
+
+            let printContent = `
+                <div class="print-area">
+                    <h1 class="text-2xl font-serif font-bold mb-4">${macrocycleName}</h1>
+                    <h2 class="text-xl font-serif font-semibold mb-4">Макроцикл (Месяц)</h2>
+            `;
+
+            for (let i = 1; i <= 4; i++) {
+                const ndn = document.getElementById(`ndnWeek${i}`)?.value || 'Не указано';
+                printContent += `
+                    <div class="mb-6 p-4 border border-gray-200 rounded-lg">
+                        <h3 class="font-medium text-gray-700 mb-2">Неделя ${i}</h3>
+                        <p><strong>Начальный двигательный навык (НДН):</strong> ${ndn}</p>
+                        <!-- Здесь можно добавить зону для перетаскивания игр, если она будет реализована -->
+                    </div>
+                `;
+            }
+
+            printContent += `</div>`;
+            printSection(printContent);
+        }
+
+        // Печать портфолио
+function printPortfolio() {
+    // Создаем копию содержимого портфолио, чтобы не модифицировать оригинал
+    const portfolioContent = document.getElementById('portfolio').cloneNode(true);
+
+    // Собираем данные из полей ввода и вставляем их обратно как текст или значения по умолчанию
+    const inputs = portfolioContent.querySelectorAll('input, textarea, select');
+    inputs.forEach(input => {
+        const valueType = input.tagName.toLowerCase();
+        if (valueType === 'input') {
+            if (input.type === 'text' || input.type === 'date') {
+                // Заменяем поле ввода на его значение (или placeholder, если значение пустое)
+                const textNode = document.createTextNode(input.value || input.placeholder || '');
+                input.parentNode.replaceChild(textNode, input);
+            } else if (input.type === 'checkbox' || input.type === 'radio') {
+                 // Для чекбоксов/радио кнопок можно отобразить галочку или слово "Да"/"Нет"
+                 const isChecked = input.checked;
+                 const textNode = document.createTextNode(isChecked ? '[x]' : '[ ]');
+                 input.parentNode.replaceChild(textNode, input);
+            }
+            // Можно добавить обработку других типов input (number, email и т.д.) по аналогии
+        } else if (valueType === 'textarea') {
+            // Заменяем textarea на div с тем же содержимым, чтобы сохранить переносы строк
+            const div = document.createElement('div');
+            div.textContent = input.value; // textContent экранирует HTML
+            div.style.whiteSpace = 'pre-wrap'; // Сохраняем переносы строк как в textarea
+            input.parentNode.replaceChild(div, input);
+        } else if (valueType === 'select') {
+            // Заменяем select на текст выбранной опции
+            const selectedOption = input.options[input.selectedIndex];
+            const textNode = document.createTextNode(selectedOption ? selectedOption.text : '');
+            input.parentNode.replaceChild(textNode, input);
+        }
     });
-  }, { threshold: .2 });
-  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-</script>
-</body>
 
+    // Создаем новое окно для печати
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+    <html>
+        <head>
+            <title>Портфолио юного лыжника</title>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+            <style>
+                body {
+                    font-family: 'Inter', sans-serif;
+                    padding: 20px;
+                    font-size: 14px;
+                }
+                .section {
+                    break-inside: avoid;
+                    margin-bottom: 20px;
+                }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-bottom: 10px;
+                }
+                th, td {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                    text-align: left;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+                /* input, select, textarea стили удаляем, так как они заменены */
+                /* Стиль для замененных textarea */
+                div[style*='pre-wrap'] {
+                     /* Можно добавить дополнительные стили для текста из textarea */
+                }
+                .no-print {
+                    display: none !important;
+                }
+                @media print {
+                    body {
+                        padding: 10mm; /* Уменьшаем поля для печати */
+                    }
+                    .section {
+                        page-break-inside: avoid;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            ${portfolioContent.innerHTML}
+            <script>
+                // Скрыть potencial оставшиеся no-print элементы и запустить печать
+                window.onload = function() {
+                    var noPrintElements = document.getElementsByClassName('no-print');
+                    for (var i = 0; i < noPrintElements.length; i++) {
+                        noPrintElements[i].style.display = 'none';
+                    }
+                    window.print();
+                    // Не закрываем окно сразу, чтобы пользователь мог видеть результат печати
+                    // window.close();
+                }
+            <\/script>
+        </body>
+    </html>`);
+    printWindow.document.close();
+}
+
+        // Универсальная функция печати
+        function printSection(content) {
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Печать</title>
+                        <link rel="preconnect" href="https://fonts.googleapis.com">
+                        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@400;500;700&display=swap" rel="stylesheet">
+                        <style>
+                            body { font-family: 'Inter', sans-serif; }
+                            .font-serif { font-family: 'Roboto Slab', serif; }
+                            .print-area { max-width: 800px; margin: 0 auto; padding: 20px; }
+                        </style>
+                    </head>
+                    <body>
+                        ${content}
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // Конструктор игр - генерация
+        document.getElementById('generateBtn')?.addEventListener('click', async function() {
+            const name = document.getElementById('gameName').value;
+            const goal = document.getElementById('gameGoal').value;
+            const players = document.getElementById('playerCount').value;
+            const details = document.getElementById('gameDetails').value;
+
+            if (!name || !goal || !players || !details) {
+                alert('Пожалуйста, заполните все поля.');
+                return;
+            }
+
+            // Симуляция вызова ИИ (в реальном приложении здесь будет fetch к API)
+            // Для демонстрации просто создаем простую игру на основе ввода
+            const generatedGame = {
+                name: name,
+                objective: goal,
+                group: players.includes('команда') || players.includes('группа') ? "Команда" : "Индивидуально",
+                description: details,
+                variations: "Усложнение: Добавить препятствия. Облегчение: Уменьшить дистанцию."
+            };
+
+            document.getElementById('generatedContent').innerHTML = `
+                <h3 class="text-xl font-serif font-semibold mb-2">${generatedGame.name}</h3>
+                <p class="mb-2"><strong>Цель:</strong> ${generatedGame.objective}</p>
+                <p class="mb-2"><strong>Участники:</strong> ${generatedGame.group}</p>
+                <p class="mb-2"><strong>Описание:</strong> ${generatedGame.description}</p>
+                <p class="mb-2"><strong>Варианты:</strong> ${generatedGame.variations}</p>
+            `;
+            document.getElementById('generatedGame').classList.remove('hidden');
+        });
+
+        // Сохранение сгенерированной игры
+        document.getElementById('saveGameBtn')?.addEventListener('click', function() {
+            alert('Игра сохранена в локальную базу (демонстрация).');
+            // В реальном приложении здесь будет логика сохранения в localStorage или на сервер
+            document.getElementById('generatedGame').classList.add('hidden');
+            // Очистка формы
+            document.getElementById('gameName').value = '';
+            document.getElementById('gameGoal').value = '';
+            document.getElementById('playerCount').value = '';
+            document.getElementById('gameDetails').value = '';
+        });
+
+        // Отмена сгенерированной игры
+        document.getElementById('cancelGameBtn')?.addEventListener('click', function() {
+            document.getElementById('generatedGame').classList.add('hidden');
+            // Очистка формы
+            document.getElementById('gameName').value = '';
+            document.getElementById('gameGoal').value = '';
+            document.getElementById('playerCount').value = '';
+            document.getElementById('gameDetails').value = '';
+        });
+
+        // Инициализация приложения
+        document.addEventListener('DOMContentLoaded', function() {
+            // Инициализация дней микроцикла
+            initMicrocycleDays();
+            
+            // Открытие главной вкладки по умолчанию
+            openTab('home');
+        });
+    </script>
+</body>
 </html>
