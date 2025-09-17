@@ -2001,7 +2001,10 @@ function printPortfolio() {
                         </button>
                     </div>
                 `;
-
+                
+// Добавляем обработчики для новых кнопок внутри сгенерированного контента
+document.getElementById('cancelGeneratedGameBtn')?.addEventListener('click', clearGeneratedGame);
+document.getElementById('saveGeneratedGameBtn')?.addEventListener('click', () => saveGeneratedGame(name));
                // Добавляем обработчики для новых кнопок внутри сгенерированного контента
 // Используем addEventListener вместо onclick в HTML для динамических элементов
 const cancelBtn = document.getElementById('cancelGeneratedGameBtn');
@@ -2120,6 +2123,7 @@ function saveGeneratedGame(gameName) {
     </script>
 </body>
 </html>
+
 
 
 
