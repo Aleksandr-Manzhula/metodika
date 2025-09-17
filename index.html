@@ -2039,61 +2039,60 @@ document.getElementById('saveGameBtn')?.addEventListener('click', function () {
         return;
     }
 
-    // Получаем текст сгенерированной игры (без HTML тегов заголовка)
-    // Это базовый способ, можно улучшить.
+    // Получаем текст сгенерированной игры
     let gameDescription = "";
     const contentDiv = generatedContentDiv.querySelector('.bg-white'); // Находим внутренний div с контентом
     if (contentDiv) {
-        // Пытаемся найти и удалить заголовок h3 внутри .bg-white
+        // Пытаемся найти и удалить заголовок h3 внутри .bg-white для корректного извлечения описания
         const header = contentDiv.querySelector('h3');
-        const headerText = header ? (header.innerText || header.textContent) : "";
         if (header) {
+            // Сохраняем текст заголовка
+            const headerText = (header.innerText || header.textContent || "").trim();
+            // Удаляем заголовок из DOM
             header.remove();
+            // Получаем оставшийся текст (описание)
+            const descText = (contentDiv.innerText || contentDiv.textContent || 'Описание отсутствует.').trim();
+            // Восстанавливаем заголовок (опционально, для корректного отображения при повторном сохранении)
+            // contentDiv.insertAdjacentHTML('afterbegin', `<h3 class="text-xl font-bold text-gray-800 mb-4">${headerText}</h3>`);
+            // Формируем описание: заголовок + описание
+            gameDescription = headerText ? `${headerText}\n\n${descText}` : descText;
+        } else {
+             // Если заголовка нет, берем весь текст
+            gameDescription = (contentDiv.innerText || contentDiv.textContent || 'Описание отсутствует.').trim();
         }
-        // Получаем оставшийся текст
-        gameDescription = contentDiv.innerText || contentDiv.textContent || 'Описание отсутствует.';
-        // Если заголовок был, добавим его обратно в начало описания для полноты, или обработаем отдельно
-        // В данном случае просто используем оставшийся текст после удаления h3
     } else {
         // Если .bg-white не найден, берем весь текст из generatedContent
-        gameDescription = generatedContentDiv.innerText || generatedContentDiv.textContent || 'Описание отсутствует.';
+        gameDescription = (generatedContentDiv.innerText || generatedContentDiv.textContent || 'Описание отсутствует.').trim();
     }
 
     // Создаем объект новой игры
-    // Генерируем уникальный ID (простой способ - максимальный ID в gamesDB + 1)
+    // Генерируем уникальный ID
     let newId = 1;
     if (gamesDB.length > 0) {
-        // Находим максимальный ID в существующей базе
         const maxId = Math.max(...gamesDB.map(g => g.id));
-        // Новый ID будет на 1 больше максимального
-        // Проверка на случай, если все ID меньше 1 (маловероятно, но для надежности)
         newId = maxId >= 1 ? maxId + 1 : 1;
     }
-    // Если gamesDB пустой, newId останется 1
 
     const newGame = {
         id: newId,
         name: gameName,
         objective: document.getElementById('gameGoal').value.trim() || "Цель не указана",
-        equipment: ["Не указано в генерации"], // Можно улучшить, попытавшись извлечь из текста
-        age: [9, 10, 11, 12], // Значения по умолчанию, можно сделать настраиваемыми
-        tags: [document.getElementById('gameGoal').value.trim().split(' ')[0] || "Общая"], // Берем первое слово из цели как тег
+        equipment: ["Не указано в генерации"],
+        age: [9, 10, 11, 12],
+        tags: [document.getElementById('gameGoal').value.trim().split(' ')[0] || "Общая"],
         group: document.getElementById('playerCount').value.trim() || "Не указано",
         description: gameDescription,
-        variations: "Вариации не сгенерированы ИИ или не извлечены." // Можно улучшить
+        variations: "Вариации не сгенерированы ИИ или не извлечены."
     };
 
     // Добавляем игру в базу данных
     gamesDB.push(newGame);
 
     alert(`Игра "${gameName}" успешно сохранена в базу данных! Новый ID: ${newId}`);
-
-    // Опционально: очищаем форму и скрываем результат после сохранения
-    // document.getElementById('cancelGameBtn')?.click();
 });
 // --- КОНЕЦ: Обработчик для кнопки "Сохранить" ---
 
-        // --- НАЧАЛО: Обработчик для кнопки "Отменить" (очистка формы и скрытие результата) ---
+// --- НАЧАЛО: Обработчик для кнопки "Отменить" (очистка формы и скрытие результата) ---
 document.getElementById('cancelGameBtn')?.addEventListener('click', function () {
     // Очищаем поля формы
     const nameInput = document.getElementById('gameName');
@@ -2111,10 +2110,10 @@ document.getElementById('cancelGameBtn')?.addEventListener('click', function () 
     if (generatedGameElement) {
         generatedGameElement.classList.add('hidden');
         // Опционально: сбросить содержимое generatedContent на начальное состояние
-        // const generatedContentElement = document.getElementById('generatedContent');
-        // if (generatedContentElement) {
-        //     generatedContentElement.innerHTML = '<p id="initial-message" class="text-gray-600 text-center italic">Заполните форму слева и нажмите кнопку, чтобы получить инструкцию.</p>';
-        // }
+        const generatedContentElement = document.getElementById('generatedContent');
+        if (generatedContentElement) {
+            generatedContentElement.innerHTML = '<p id="initial-message" class="text-gray-600 text-center italic">Заполните форму слева и нажмите кнопку, чтобы получить инструкцию.</p>';
+        }
     }
 });
 // --- КОНЕЦ: Обработчик для кнопки "Отменить" ---
@@ -2130,6 +2129,7 @@ document.getElementById('cancelGameBtn')?.addEventListener('click', function () 
     </script>
 </body>
 </html>
+
 
 
 
