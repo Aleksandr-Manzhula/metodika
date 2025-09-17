@@ -299,24 +299,52 @@
             </div>
         </section>
 
-        <!-- ВКЛАДКА 3: Конструктор игр -->
-<section id="constructor" class="tab-content py-10">
-    <h2 class="section-title mb-10">Конструктор игр</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-white p-8 rounded-xl shadow-lg">
-        <div class="space-y-6">
-            <!-- ... поля ввода ... -->
-            <button id="generateBtn" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors">Сгенерировать инструкцию</button>
-        </div>
-        <!-- Добавлен id="generatedGame" -->
-        <div id="generatedGame" class="bg-gray-100 p-8 rounded-lg shadow-inner">
-            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Сгенерированная игра</h3>
-            <div id="generatedContent" class="space-y-4">
-                <div id="loading-spinner" class="w-12 h-12 border-4 border-gray-200 rounded-full hidden mx-auto my-8"></div>
-                <p id="initial-message" class="text-gray-600 text-center italic">Заполните форму слева и нажмите кнопку, чтобы получить инструкцию.</p>
+                <!-- ВКЛАДКА 3: Конструктор игр -->
+        <section id="constructor" class="tab-content py-10">
+            <h2 class="section-title mb-10">Конструктор игр</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-white p-8 rounded-xl shadow-lg">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-semibold text-gray-800">Настройте свою игру</h3>
+                    <div>
+                        <label for="gameName" class="block text-gray-700 font-medium mb-1">Название игры</label>
+                        <input type="text" id="gameName" placeholder="Например: 'Гонка на выносливость'" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="gameGoal" class="block text-gray-700 font-medium mb-1">Цель игры</label>
+                        <textarea id="gameGoal" rows="4" placeholder="Например: 'Развитие общей выносливости'" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+                    <div>
+                        <label for="playerCount" class="block text-gray-700 font-medium mb-1">Количество игроков</label>
+                        <input type="text" id="playerCount" placeholder="Например: 6-12" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="gameDetails" class="block text-gray-700 font-medium mb-1">Описание / Детали</label>
+                        <!-- Изменено с textarea на input type="text" для соответствия стилю из 13.10.txt -->
+                        <input type="text" id="gameDetails" placeholder="Например: возраст, место проведения, инвентарь" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <!-- Если хотите textarea, используйте этот код вместо предыдущей строки:
+                        <textarea id="gameDetails" rows="3" placeholder="Например: возраст участников, место проведения, дополнительные инвентарь или правила" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        -->
+                    </div>
+                    <button id="generateBtn" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors">Сгенерировать инструкцию</button>
+                </div>
+                <div id="generatedGame" class="bg-gray-100 p-8 rounded-lg shadow-inner flex flex-col h-full"> <!-- Добавлен id="generatedGame" -->
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Сгенерированная игра</h3>
+                    <div id="generatedContent" class="space-y-4 flex-grow overflow-y-auto">
+                        <div id="loading-spinner" class="w-12 h-12 border-4 border-gray-200 rounded-full hidden mx-auto my-8"></div>
+                        <p id="initial-message" class="text-gray-600 text-center italic">Заполните форму слева и нажмите кнопку, чтобы получить инструкцию.</p>
+                    </div>
+                    <!-- Кнопки действий теперь ВНЕ блока generatedContent и имеют старые id для совместимости -->
+                    <div class="flex justify-end space-x-3 mt-4">
+                        <button id="cancelGameBtn" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition focus:outline-none focus:ring-2 focus:ring-gray-400">
+                            Отменить
+                        </button>
+                        <button id="saveGameBtn" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition focus:outline-none focus:ring-2 focus:ring-green-400">
+                            Сохранить в базу
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
         <!-- ВКЛАДКА 4: Планировщик -->
         <section id="planner" class="tab-content">
@@ -2131,6 +2159,7 @@ document.getElementById('cancelGameBtn')?.addEventListener('click', function () 
     </script>
 </body>
 </html>
+
 
 
 
