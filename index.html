@@ -300,48 +300,38 @@
         </section>
 
         <!-- ВКЛАДКА 3: Конструктор игр -->
-        <section id="constructor" class="tab-content">
-            <h1 class="text-3xl font-serif font-bold text-gray-900 mb-6">Конструктор игр</h1>
-            
-            <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
-                <div class="mb-6">
-                    <label for="gameName" class="block text-sm font-medium text-gray-700 mb-1">Название игры</label>
-                    <input type="text" id="gameName" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
-                </div>
-                
-                <div class="mb-6">
-                    <label for="gameGoal" class="block text-sm font-medium text-gray-700 mb-1">Цель игры</label>
-                    <input type="text" id="gameGoal" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
-                </div>
-                
-                <div class="mb-6">
-                    <label for="playerCount" class="block text-sm font-medium text-gray-700 mb-1">Количество игроков</label>
-                    <input type="text" id="playerCount" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500">
-                </div>
-                
-                <div class="mb-6">
-                    <label for="gameDetails" class="block text-sm font-medium text-gray-700 mb-1">Описание / Детали</label>
-                    <textarea id="gameDetails" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"></textarea>
-                </div>
-                
-                <button id="generateBtn" class="w-full py-3 px-4 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 text-white font-medium rounded-lg shadow-md transition duration-300 ease-in-out">
-                    Сгенерировать инструкцию
-                </button>
+<section id="constructor" class="tab-content py-10">
+    <h2 class="section-title mb-10">Конструктор игр</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 bg-white p-8 rounded-xl shadow-lg">
+        <div class="space-y-6">
+            <h3 class="text-2xl font-semibold text-gray-800">Настройте свою игру</h3>
+            <div>
+                <label for="gameName" class="block text-gray-700 font-medium mb-1">Название игры</label>
+                <input type="text" id="gameName" placeholder="Например: 'Генератор идей'" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
-
-            <div id="generatedGame" class="bg-white rounded-2xl shadow-lg p-6 mb-8 hidden">
-                <h2 class="text-2xl font-serif font-semibold text-gray-800 mb-4">Сгенерированная игра</h2>
-                <div id="generatedContent" class="prose max-w-none mb-6"></div>
-                <div class="flex space-x-4">
-                    <button id="saveGameBtn" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-md shadow transition duration-300 ease-in-out">
-                        Сохранить
-                    </button>
-                    <button id="cancelGameBtn" class="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white font-medium rounded-md shadow transition duration-300 ease-in-out">
-                        Отменить
-                    </button>
-                </div>
+            <div>
+                <label for="gameGoal" class="block text-gray-700 font-medium mb-1">Цель игры</label>
+                <textarea id="gameGoal" rows="4" placeholder="Например: 'Развитие креативности и навыков брейншторминга у команды.'" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
             </div>
-        </section>
+            <div>
+                <label for="playerCount" class="block text-gray-700 font-medium mb-1">Количество игроков</label>
+                <input type="text" id="playerCount" placeholder="Например: 5-10" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label for="gameDetails" class="block text-gray-700 font-medium mb-1">Описание / Детали</label>
+                <input type="text" id="gameDetails" placeholder="Например: лидерство, коммуникация, креативность" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <button id="generateBtn" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors">Сгенерировать инструкцию</button>
+        </div>
+        <div class="bg-gray-100 p-8 rounded-lg shadow-inner">
+            <h3 class="text-2xl font-semibold mb-4 text-gray-800">Сгенерированная игра</h3>
+            <div id="generatedContent" class="space-y-4">
+                <div id="loading-spinner" class="w-12 h-12 border-4 border-gray-200 rounded-full hidden mx-auto my-8"></div>
+                <p id="initial-message" class="text-gray-600 text-center italic">Заполните форму слева и нажмите кнопку, чтобы получить инструкцию.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- ВКЛАДКА 4: Планировщик -->
         <section id="planner" class="tab-content">
@@ -1920,172 +1910,110 @@ function printPortfolio() {
 
         // --- КОНЕЦ: Глобальные функции для Конструктора игр ---
 
-        // --- НАЧАЛО: Конструктор игр - генерация с ИИ ---
-        document.getElementById('generateBtn')?.addEventListener('click', async function () {
-            const name = document.getElementById('gameName').value.trim();
-            const goal = document.getElementById('gameGoal').value.trim();
-            const players = document.getElementById('playerCount').value.trim();
-            const details = document.getElementById('gameDetails').value.trim();
+        // Обработчик для кнопки "Сгенерировать инструкцию" в Конструкторе игр
+document.getElementById('generateBtn')?.addEventListener('click', async function () {
+    const name = document.getElementById('gameName').value.trim();
+    const goal = document.getElementById('gameGoal').value.trim();
+    const players = document.getElementById('playerCount').value.trim();
+    const details = document.getElementById('gameDetails').value.trim();
+    const generatedContent = document.getElementById('generatedContent');
+    const loadingSpinner = document.getElementById('loading-spinner');
+    const initialMessage = document.getElementById('initial-message');
 
-            // Базовая проверка заполненности обязательных полей
-            if (!name || !goal) {
-                alert('Пожалуйста, заполните как минимум название и цель игры.');
-                return;
-            }
+    if (name === '' || goal === '') {
+        generatedContent.innerHTML = `<p class="text-red-500 text-center">Пожалуйста, заполните название и цель игры.</p>`;
+        return;
+    }
 
-            // Подготовка элементов UI для отображения результата
-            const generatedGameElement = document.getElementById('generatedGame');
-            const generatedContentElement = document.getElementById('generatedContent');
-            if (generatedGameElement && generatedContentElement) {
-                generatedGameElement.classList.remove('hidden');
-                // Показываем индикатор загрузки
-                generatedContentElement.innerHTML = `
-                    <div class="flex flex-col items-center justify-center p-8 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
-                        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
-                        <p class="text-gray-600">Генерируем инструкцию с помощью ИИ...</p>
-                    </div>
-                `;
-            } else {
-                console.error("Не найдены элементы generatedGame или generatedContent в DOM");
-                alert("Ошибка отображения: не найдены необходимые элементы на странице.");
-                return;
-            }
+    // Показываем индикатор загрузки
+    if (loadingSpinner) loadingSpinner.classList.remove('hidden');
+    if (initialMessage) initialMessage.classList.add('hidden');
+    generatedContent.innerHTML = `<div id="loading-spinner" class="w-12 h-12 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin mx-auto my-8"></div>`;
 
-            // --- НАЧАЛО: Реальный вызов ИИ ---
-            // 1. Подготовка промпта (запроса) для ИИ
-            const prompt = `Ты - опытный тренер по беговым лыжам для детей.
-Создай игровую тренировочную активность (игру) на основе следующих данных:
-Название: ${name}
-Цель: ${goal}
-Количество игроков: ${players || 'Не указано'}
-Дополнительные детали: ${details || 'Нет'}
+    // --- НАЧАЛО: Реальный вызов ИИ ---
+    // 1. Подготовка промпта
+    const prompt = `Сгенерируй подробную инструкцию для спортивной игры на лыжах.
+Название игры: ${name}
+Цель игры: ${goal}
+Количество игроков: ${players || 'не указано'}
+Дополнительные детали: ${details || 'нет'}
 
-Используй четкую структуру для ответа:
-1. Название игры: [Повтори название]
-2. Цель игры: [Опиши цель игры, связанную с ${goal}]
-3. Инвентарь: [Перечисли необходимые предметы, если нужны]
-4. Ход игры: [Пошаговое описание правил и действий игроков]
-5. Вариации: [Предложи один способ усложнить игру и один способ облегчить]
-6. Рефлексия: [Задай 2-3 вопроса для обсуждения после игры, чтобы закрепить навыки]
+Сгенерируй только инструкцию, без лишних слов. Используй следующие разделы:
+* **Цель игры:** (короткое описание, как в задании)
+* **Ход игры:** (пошаговая инструкция)
+* **Материалы:** (список необходимых предметов, если ничего не нужно, напиши 'Не требуется')
+* **Рефлексия:** (список вопросов для обсуждения после игры, минимум 3 вопроса)
+Сделай все разделы жирным шрифтом.
+`;
 
-Отвечай только на русском языке и строго по пунктам, без дополнительных комментариев.`;
+    // 2. Подготовка данных для запроса
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // ВАЖНО: Никогда не публикуйте реальный API-ключ в открытом виде!
+    // Для тестирования на GitHub Pages это сложно обойти.
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    const apiKey = 'AIzaSyAREqrGzrOMZjUC0aAj64zgyv1KfYD_jEc'; // <-- ВАШ РЕАЛЬНЫЙ API-КЛЮЧ_ЗДЕСЬ!
+    // Вы можете использовать модель gemini-1.5-flash или gemini-1.5-pro
+    // Проверьте, доступна ли модель gemini-2.5-flash-preview-05-20, если хотите её использовать
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+    // Или const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${apiKey}`;
+    // Или const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
-            // 2. Подготовка данных для запроса к API
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // ВАЖНО: ВСТАВИТЬ СЮДА ваш НОВЫЙ API-ключ ПОСЛЕ теста!
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            const API_KEY = 'AIzaSyAREqrGzrOMZjUC0aAj64zgyv1KfYD_jEc'; // <-- ВАШ КЛЮЧ (ЗАМЕНИТЬ ПОСЛЕ ТЕСТА!)
-            // Исправлен URL без лишних пробелов
-            const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
-            // Или: const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${API_KEY}`;
+    const requestBody = {
+        contents: [{
+            parts: [{
+                text: prompt
+            }]
+        }]
+    };
 
-            const requestBody = {
-                contents: [{
-                    parts: [{
-                        text: prompt
-                    }]
-                }]
-            };
+    try {
+        // 3. Отправка запроса к API
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestBody),
+        });
 
+        if (!response.ok) {
+            // Попытка получить сообщение об ошибке от API
+            let errorMsg = `Ошибка API: ${response.status}`;
             try {
-                // 3. Отправка запроса к API Google AI
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                        // Примечание: ключ передается в URL, отдельный заголовок X-goog-api-key не обязателен
-                    },
-                    body: JSON.stringify(requestBody)
-                });
-
-                // 4. Проверка успешности запроса
-                if (!response.ok) {
-                    let errorMsg = `Ошибка API Google AI: ${response.status} ${response.statusText}`;
-                    try {
-                        // Попытка получить детали ошибки от API
-                        const errorData = await response.json();
-                        console.error("Детали ошибки API:", errorData);
-                        errorMsg += `. Сообщение: ${errorData.error?.message || 'Неизвестная ошибка API'}`;
-                    } catch (parseError) {
-                        // Если не удалось распарсить JSON ошибки, просто логируем
-                        console.error("Ошибка парсинга JSON ошибки API:", parseError);
-                    }
-                    // Выбрасываем ошибку для обработки в блоке catch
-                    throw new Error(errorMsg);
-                }
-
-                // 5. Получение и обработка ответа от ИИ
-                const data = await response.json();
-                console.log("Полный ответ от ИИ:", data); // Для отладки
-
-                let generatedText = "ИИ не вернул текст ответа или ответ был пустой.";
-                // Проверяем структуру ответа и извлекаем текст
-                if (data.candidates &&
-                    data.candidates[0] &&
-                    data.candidates[0].content &&
-                    data.candidates[0].content.parts &&
-                    data.candidates[0].content.parts[0]) {
-                    generatedText = data.candidates[0].content.parts[0].text;
-                }
-
-                // 6. Форматирование текста для отображения
-                // Разбиваем текст на строки, фильтруем пустые, оборачиваем в <p>
-                const lines = generatedText.split('\n').filter(line => line.trim() !== '');
-                const formattedContent = lines.map(line => `<p class="mb-2">${line.trim()}</p>`).join('');
-
-                // 7. Отображение результата в элементе generatedContent
-                generatedContentElement.innerHTML = `
-                    <div class="prose max-w-none">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">${name}</h3>
-                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                            ${formattedContent}
-                        </div>
-                    </div>
-                    <div class="flex justify-end space-x-3 mt-4">
-                        <button id="cancelGeneratedGameBtn" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition focus:outline-none focus:ring-2 focus:ring-gray-400">
-                            Очистить
-                        </button>
-                        <button id="saveGeneratedGameBtn" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition focus:outline-none focus:ring-2 focus:ring-green-400">
-                            Добавить в базу
-                        </button>
-                    </div>
-                `;
-
-                // Добавляем обработчики для новых кнопок внутри сгенерированного контента
-                // Используем addEventListener вместо onclick в HTML для динамических элементов
-                const cancelBtn = document.getElementById('cancelGeneratedGameBtn');
-                const saveBtn = document.getElementById('saveGeneratedGameBtn');
-                if (cancelBtn) {
-                    cancelBtn.addEventListener('click', clearGeneratedGame);
-                }
-                if (saveBtn) {
-                    // Передаем имя игры в функцию saveGeneratedGame
-                    saveBtn.addEventListener('click', function () {
-                        saveGeneratedGame(name);
-                    });
-                }
-
-            } catch (error) {
-                // 8. Обработка ошибок (сетевые проблемы, ошибки API, ошибки парсинга и т.д.)
-                console.error("Ошибка при вызове ИИ:", error);
-                // Отображаем пользователю понятное сообщение об ошибке
-                generatedContentElement.innerHTML = `
-                    <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0">
-                                <i class="fas fa-exclamation-triangle text-red-500"></i>
-                            </div>
-                            <div class="ml-3">
-                                <p class="text-sm text-red-700">
-                                    <strong>Ошибка генерации:</strong> ${error.message}
-                                </p>
-                                <p class="text-xs text-red-600 mt-1">Проверьте подключение к интернету и корректность API-ключа.</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
+                const errorData = await response.json();
+                errorMsg += ` - ${errorData.error?.message || 'Неизвестная ошибка API'}`;
+            } catch (e) {
+                // Игнорируем ошибку парсинга, если не удалось получить JSON ошибки
             }
-            // --- КОНЕЦ: Реальный вызов ИИ ---
+            throw new Error(errorMsg);
+        }
+
+        const data = await response.json();
+        console.log("Ответ от ИИ:", data); // Для отладки
+
+        // 4. Обработка ответа
+        let generatedText = "Не удалось получить ответ от ИИ.";
+        if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0]) {
+            generatedText = data.candidates[0].content.parts[0].text;
+        }
+
+        // 5. Отображение результата
+        // Форматируем текст: выделяем жирным и заменяем переводы строк
+        const formattedText = generatedText
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Жирный
+            .replace(/\n/g, '<br>'); // Переводы строк
+
+        generatedContent.innerHTML = `<div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">${formattedText}</div>`;
+
+    } catch (error) {
+        console.error("Error generating game:", error);
+        generatedContent.innerHTML = `<p class="text-red-500 text-center"><strong>Ошибка:</strong> ${error.message}</p>`;
+    } finally {
+        // Скрываем индикатор загрузки
+        if (loadingSpinner) loadingSpinner.classList.add('hidden');
+    }
+    // --- КОНЕЦ: Реальный вызов ИИ ---
+});
         });
         // --- КОНЕЦ: Конструктор игр - генерация с ИИ ---
 
@@ -2120,6 +2048,7 @@ function printPortfolio() {
     </script>
 </body>
 </html>
+
 
 
 
