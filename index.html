@@ -307,27 +307,36 @@
             <h3 class="text-2xl font-semibold text-gray-800">Настройте свою игру</h3>
             <div>
                 <label for="gameName" class="block text-gray-700 font-medium mb-1">Название игры</label>
-                <input type="text" id="gameName" placeholder="Например: 'Генератор идей'" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="text" id="gameName" placeholder="Например: 'Гонка на выносливость'" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             <div>
                 <label for="gameGoal" class="block text-gray-700 font-medium mb-1">Цель игры</label>
-                <textarea id="gameGoal" rows="4" placeholder="Например: 'Развитие креативности и навыков брейншторминга у команды.'" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                <textarea id="gameGoal" rows="4" placeholder="Например: 'Развитие общей выносливости'" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
             </div>
             <div>
                 <label for="playerCount" class="block text-gray-700 font-medium mb-1">Количество игроков</label>
-                <input type="text" id="playerCount" placeholder="Например: 5-10" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="text" id="playerCount" placeholder="Например: 6-12" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             <div>
                 <label for="gameDetails" class="block text-gray-700 font-medium mb-1">Описание / Детали</label>
-                <input type="text" id="gameDetails" placeholder="Например: лидерство, коммуникация, креативность" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="text" id="gameDetails" placeholder="Например: возраст, место проведения, инвентарь" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             <button id="generateBtn" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors">Сгенерировать инструкцию</button>
         </div>
-        <div class="bg-gray-100 p-8 rounded-lg shadow-inner">
+        <div class="bg-gray-100 p-8 rounded-lg shadow-inner flex flex-col h-full">
             <h3 class="text-2xl font-semibold mb-4 text-gray-800">Сгенерированная игра</h3>
-            <div id="generatedContent" class="space-y-4">
+            <div id="generatedContent" class="space-y-4 flex-grow overflow-y-auto">
                 <div id="loading-spinner" class="w-12 h-12 border-4 border-gray-200 rounded-full hidden mx-auto my-8"></div>
                 <p id="initial-message" class="text-gray-600 text-center italic">Заполните форму слева и нажмите кнопку, чтобы получить инструкцию.</p>
+            </div>
+            <!-- Кнопки действий теперь ВНЕ блока generatedContent -->
+            <div id="generatedGameActions" class="flex justify-end space-x-3 mt-4 hidden">
+                <button id="cancelGeneratedGameBtn" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    Отменить
+                </button>
+                <button id="saveGeneratedGameBtn" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition focus:outline-none focus:ring-2 focus:ring-green-400">
+                    Сохранить в базу
+                </button>
             </div>
         </div>
     </div>
@@ -1917,18 +1926,18 @@ document.getElementById('generateBtn')?.addEventListener('click', async function
     const players = document.getElementById('playerCount').value.trim();
     const details = document.getElementById('gameDetails').value.trim();
     const generatedContent = document.getElementById('generatedContent');
-    const loadingSpinner = document.getElementById('loading-spinner');
     const initialMessage = document.getElementById('initial-message');
+    const gameActions = document.getElementById('generatedGameActions'); // Новый элемент
 
     if (name === '' || goal === '') {
         generatedContent.innerHTML = `<p class="text-red-500 text-center">Пожалуйста, заполните название и цель игры.</p>`;
+        if (gameActions) gameActions.classList.add('hidden'); // Скрываем кнопки
         return;
     }
 
     // Показываем индикатор загрузки
-    if (loadingSpinner) loadingSpinner.classList.remove('hidden');
-    if (initialMessage) initialMessage.classList.add('hidden');
     generatedContent.innerHTML = `<div id="loading-spinner" class="w-12 h-12 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin mx-auto my-8"></div>`;
+    if (gameActions) gameActions.classList.add('hidden'); // Скрываем кнопки во время загрузки
 
     // --- НАЧАЛО: Реальный вызов ИИ ---
     // 1. Подготовка промпта
@@ -1953,10 +1962,8 @@ document.getElementById('generateBtn')?.addEventListener('click', async function
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     const apiKey = 'AIzaSyAREqrGzrOMZjUC0aAj64zgyv1KfYD_jEc'; // <-- ВАШ РЕАЛЬНЫЙ API-КЛЮЧ_ЗДЕСЬ!
     // Вы можете использовать модель gemini-1.5-flash или gemini-1.5-pro
-    // Проверьте, доступна ли модель gemini-2.5-flash-preview-05-20, если хотите её использовать
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
     // Или const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${apiKey}`;
-    // Или const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
     const requestBody = {
         contents: [{
@@ -2003,39 +2010,114 @@ document.getElementById('generateBtn')?.addEventListener('click', async function
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Жирный
             .replace(/\n/g, '<br>'); // Переводы строк
 
-        generatedContent.innerHTML = `<div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">${formattedText}</div>`;
+        generatedContent.innerHTML = `<div class="bg-white p-6 rounded-lg shadow-md border border-gray-200"><h3 class="text-xl font-bold text-gray-800 mb-4">${name}</h3>${formattedText}</div>`;
+        // Показываем кнопки действий
+        if (gameActions) gameActions.classList.remove('hidden');
 
     } catch (error) {
         console.error("Error generating game:", error);
         generatedContent.innerHTML = `<p class="text-red-500 text-center"><strong>Ошибка:</strong> ${error.message}</p>`;
-    } finally {
-        // Скрываем индикатор загрузки
-        if (loadingSpinner) loadingSpinner.classList.add('hidden');
+        if (gameActions) gameActions.classList.add('hidden'); // Скрываем кнопки при ошибке
     }
     // --- КОНЕЦ: Реальный вызов ИИ ---
 });
         });
         // --- КОНЕЦ: Конструктор игр - генерация с ИИ ---
 
-        // --- НАЧАЛО: Сохранение сгенерированной игры (заглушка) ---
-        document.getElementById('saveGameBtn')?.addEventListener('click', function () {
-            // Так как кнопка 'Сохранить' внутри сгенерированного блока заменяется динамически,
-            // этот обработчик может не сработать для новой кнопки.
-            // Логика сохранения теперь в функции saveGeneratedGame.
-            // Оставляем для совместимости со старым UI, если он где-то используется.
-            alert('Функция "Сохранить" (старая кнопка) активирована. Используйте кнопку "Добавить в базу" в сгенерированной игре.');
-        });
-        // --- КОНЕЦ: Сохранение сгенерированной игры (заглушка) ---
+       // --- НАЧАЛО: Обработчик для кнопки "Сохранить" (сохранение сгенерированной игры в базу) ---
+document.getElementById('saveGameBtn')?.addEventListener('click', function () {
+    const generatedContentDiv = document.getElementById('generatedContent');
+    const gameNameInput = document.getElementById('gameName');
+    if (!generatedContentDiv || !gameNameInput) {
+        alert('Ошибка: не найдены необходимые элементы для сохранения.');
+        return;
+    }
 
-        // --- НАЧАЛО: Отмена сгенерированной игры (заглушка) ---
-        document.getElementById('cancelGameBtn')?.addEventListener('click', function () {
-            // Так как кнопка 'Отменить' внутри сгенерированного блока заменяется динамически,
-            // этот обработчик может не сработать для новой кнопки.
-            // Логика отмены теперь в функции clearGeneratedGame.
-            // Оставляем для совместимости со старым UI, если он где-то используется.
-            clearGeneratedGame();
-        });
-        // --- КОНЕЦ: Отмена сгенерированной игры (заглушка) ---
+    const gameName = gameNameInput.value.trim();
+    if (!gameName) {
+        alert('Ошибка: Название игры не может быть пустым.');
+        return;
+    }
+
+    // Получаем текст сгенерированной игры (без HTML тегов заголовка)
+    // Это базовый способ, можно улучшить.
+    let gameDescription = "";
+    const contentDiv = generatedContentDiv.querySelector('.bg-white'); // Находим внутренний div с контентом
+    if (contentDiv) {
+        // Пытаемся найти и удалить заголовок h3 внутри .bg-white
+        const header = contentDiv.querySelector('h3');
+        const headerText = header ? (header.innerText || header.textContent) : "";
+        if (header) {
+            header.remove();
+        }
+        // Получаем оставшийся текст
+        gameDescription = contentDiv.innerText || contentDiv.textContent || 'Описание отсутствует.';
+        // Если заголовок был, добавим его обратно в начало описания для полноты, или обработаем отдельно
+        // В данном случае просто используем оставшийся текст после удаления h3
+    } else {
+        // Если .bg-white не найден, берем весь текст из generatedContent
+        gameDescription = generatedContentDiv.innerText || generatedContentDiv.textContent || 'Описание отсутствует.';
+    }
+
+    // Создаем объект новой игры
+    // Генерируем уникальный ID (простой способ - максимальный ID в gamesDB + 1)
+    let newId = 1;
+    if (gamesDB.length > 0) {
+        // Находим максимальный ID в существующей базе
+        const maxId = Math.max(...gamesDB.map(g => g.id));
+        // Новый ID будет на 1 больше максимального
+        // Проверка на случай, если все ID меньше 1 (маловероятно, но для надежности)
+        newId = maxId >= 1 ? maxId + 1 : 1;
+    }
+    // Если gamesDB пустой, newId останется 1
+
+    const newGame = {
+        id: newId,
+        name: gameName,
+        objective: document.getElementById('gameGoal').value.trim() || "Цель не указана",
+        equipment: ["Не указано в генерации"], // Можно улучшить, попытавшись извлечь из текста
+        age: [9, 10, 11, 12], // Значения по умолчанию, можно сделать настраиваемыми
+        tags: [document.getElementById('gameGoal').value.trim().split(' ')[0] || "Общая"], // Берем первое слово из цели как тег
+        group: document.getElementById('playerCount').value.trim() || "Не указано",
+        description: gameDescription,
+        variations: "Вариации не сгенерированы ИИ или не извлечены." // Можно улучшить
+    };
+
+    // Добавляем игру в базу данных
+    gamesDB.push(newGame);
+
+    alert(`Игра "${gameName}" успешно сохранена в базу данных! Новый ID: ${newId}`);
+
+    // Опционально: очищаем форму и скрываем результат после сохранения
+    // document.getElementById('cancelGameBtn')?.click();
+});
+// --- КОНЕЦ: Обработчик для кнопки "Сохранить" ---
+
+        // --- НАЧАЛО: Обработчик для кнопки "Отменить" (очистка формы и скрытие результата) ---
+document.getElementById('cancelGameBtn')?.addEventListener('click', function () {
+    // Очищаем поля формы
+    const nameInput = document.getElementById('gameName');
+    const goalInput = document.getElementById('gameGoal');
+    const playersInput = document.getElementById('playerCount');
+    const detailsInput = document.getElementById('gameDetails');
+
+    if (nameInput) nameInput.value = '';
+    if (goalInput) goalInput.value = '';
+    if (playersInput) playersInput.value = '';
+    if (detailsInput) detailsInput.value = '';
+
+    // Скрываем секцию сгенерированной игры
+    const generatedGameElement = document.getElementById('generatedGame');
+    if (generatedGameElement) {
+        generatedGameElement.classList.add('hidden');
+        // Опционально: сбросить содержимое generatedContent на начальное состояние
+        // const generatedContentElement = document.getElementById('generatedContent');
+        // if (generatedContentElement) {
+        //     generatedContentElement.innerHTML = '<p id="initial-message" class="text-gray-600 text-center italic">Заполните форму слева и нажмите кнопку, чтобы получить инструкцию.</p>';
+        // }
+    }
+});
+// --- КОНЕЦ: Обработчик для кнопки "Отменить" ---
         
         // Инициализация приложения
         document.addEventListener('DOMContentLoaded', function() {
@@ -2048,6 +2130,7 @@ document.getElementById('generateBtn')?.addEventListener('click', async function
     </script>
 </body>
 </html>
+
 
 
 
