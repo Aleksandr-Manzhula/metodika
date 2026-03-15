@@ -2006,7 +2006,7 @@ function saveGeneratedGame(gameName) {
 
         // 2. Подготовка данных для запроса к OpenRouter API
         const API_KEY = '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';
-        const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
+        const API_URL = 'https://openrouter.ai/chat?models=openrouter/hunter-alpha';
 
         // Очищаем API ключ от возможных невидимых символов
         const cleanApiKey = API_KEY.replace(/[^\x20-\x7E]/g, '');
