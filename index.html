@@ -949,65 +949,68 @@
                     
                     <div class="mb-6">
                         <h3 class="font-semibold mb-2">14. ВАШ (Настроение/Самочувствие 0-10):</h3>
-                        <!-- Таблица для 10 тренировок -->
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-sm">
-                                <thead>
-                                    <tr class="bg-gray-100">
-                                        <th class="p-2 border border-gray-300">Тренировка</th>
-                                        <th class="p-2 border border-gray-300">Дата</th>
-                                        <th class="p-2 border border-gray-300">Настроение (1-10)</th>
-                                        <th class="p-2 border border-gray-300">Самочувствие (1-10)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Генерируем строки для 10 тренировок -->
-                                    <script>
-                                        document.write('<tr>');
-                                        for (let i = 1; i <= 10; i++) {
-                                            document.write(`
-                                                <tr>
-                                                    <td class="p-2 border border-gray-300 text-center">${i}</td>
-                                                    <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
-                                                    <td class="p-2 border border-gray-300">
-                                                        <div class="mood-rating">
-                                                            <select class="w-full outline-none">
-                                                                <option value="">--</option>
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
-                                                                <option value="6">6</option>
-                                                                <option value="7">7</option>
-                                                                <option value="8">8</option>
-                                                                <option value="9">9</option>
-                                                                <option value="10">10</option>
-                                                            </select>
-                                                        </div>
-                                                    </td>
-                                                    <td class="p-2 border border-gray-300">
-                                                        <div class="mood-rating">
-                                                            <select class="w-full outline-none">
-                                                                <option value="">--</option>
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
-                                                                <option value="6">6</option>
-                                                                <option value="7">7</option>
-                                                                <option value="8">8</option>
-                                                                <option value="9">9</option>
-                                                                <option value="10">10</option>
-                                                            </select>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            `);
-                                        }
-                                    </script>
-                                </tbody>
+                       <tbody>
+    <tr>
+        <td class="p-2 border border-gray-300 text-center">1</td>
+        <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+    </tr>
+    <tr>
+        <td class="p-2 border border-gray-300 text-center">2</td>
+        <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+    </tr>
+    <tr>
+        <td class="p-2 border border-gray-300 text-center">3</td>
+        <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+    </tr>
+    <tr>
+        <td class="p-2 border border-gray-300 text-center">4</td>
+        <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+    </tr>
+    <tr>
+        <td class="p-2 border border-gray-300 text-center">5</td>
+        <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+    </tr>
+    <tr>
+        <td class="p-2 border border-gray-300 text-center">6</td>
+        <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+    </tr>
+    <tr>
+        <td class="p-2 border border-gray-300 text-center">7</td>
+        <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+    </tr>
+    <tr>
+        <td class="p-2 border border-gray-300 text-center">8</td>
+        <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+    </tr>
+    <tr>
+        <td class="p-2 border border-gray-300 text-center">9</td>
+        <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+    </tr>
+    <tr>
+        <td class="p-2 border border-gray-300 text-center">10</td>
+        <td class="p-2 border border-gray-300"><input type="date" class="w-full outline-none"></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+        <td class="p-2 border border-gray-300"><select class="w-full outline-none"><option value="">--</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></td>
+    </tr>
+</tbody>
                             </table>
                         </div>
                         <div class="mt-2 text-sm">
